@@ -1,0 +1,187 @@
+@import url('https://fonts.googleapis.com/css2?family=Almarai&family=Bebas+Neue&family=Caveat:wght@500&family=Poppins&display=swap');
+
+:root {
+    --text: #1d3557;
+    --light-text: #ced4da;
+    /* --gradient-background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%); */
+    --gradient-background: linear-gradient(to top, #e6e9f0 0%, #eef1f5 100%);
+    --gradient-text: linear-gradient(180deg, #2af598 0%, #009efd 100%);
+    --gradient-abyad: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
+
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+a {
+    transition: .3s;
+    color: inherit;
+    text-decoration: none !important;
+}
+
+.bebas {
+    font-family: 'Bebas Neue', cursive;
+    margin: 0;
+}
+
+.cav {
+    font-family: 'Caveat', cursive;
+    margin: 0;
+}
+
+.bg-abyad {
+    background: var(--gradient-background);
+}
+
+.bg-extra-abyad{
+    background: var(--gradient-abyad);
+}
+.pop {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+}
+
+.arb {
+    font-family: 'Almarai', sans-serif;
+    margin: 0;
+}
+
+.text {
+    color: var(--text);
+}
+
+.text-abyad {
+    color: var(--light-text) !important;
+}
+
+
+.text-justify {
+    text-align: justify;
+}
+
+.fs-small {
+    font-size: smaller !important;
+}
+
+.ls-2 {
+    letter-spacing: 2px;
+}
+
+.point {
+    cursor: pointer;
+}
+
+.overflow-x {
+    overflow-x: hidden;
+}
+
+
+.bg-glass {
+    /* From https://css.glass */
+    background: rgba(211, 255, 244, 0.13) !important;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1) !important;
+    backdrop-filter: blur(12px) !important;
+    -webkit-backdrop-filter: blur(12px) !important;
+}
+
+/* header */
+body {
+    background: var(--gradient-background);
+}
+
+header {
+    transition: .4s ease-in-out;
+    z-index: 999999999;
+}
+
+header>nav {
+    display: flex;
+}
+
+.menu {
+    display: none !important;
+}
+
+
+/* width */
+::-webkit-scrollbar {
+    width: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #888;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: var(--bs-primary);
+}
+
+#slider-md {
+    display: none;
+}
+
+.line-md {
+    display: none;
+}
+
+
+/* backgrounds */
+
+.text-gradient {
+
+    background-image: var(--gradient-text);
+    /* Set the background size and repeat properties. */
+    background-size: 100%;
+    background-repeat: repeat;
+
+    /* Use the text as a mask for the background. */
+    /* This will show the gradient as a text color rather than element bg. */
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -moz-background-clip: text;
+    -moz-text-fill-color: transparent;
+}
+
+.bg-grad {
+    background-image: linear-gradient(180deg, #2af598 0%, #009efd 100%);
+}
+
+.social-media-icon:hover {
+
+    background-image: var(--gradient-text);
+    /* Set the background size and repeat properties. */
+    background-size: 100%;
+    background-repeat: repeat;
+
+    /* Use the text as a mask for the background. */
+    /* This will show the gradient as a text color rather than element bg. */
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -moz-background-clip: text;
+    -moz-text-fill-color: transparent;
+}
+
+.gradient-hover:hover {
+
+    background-image: var(--gradient-text);
+    /* Set the background size and repeat properties. */
+    background-size: 100%;
+    background-repeat: repeat;
+
+    /* Use the text as a mask for the background. */
+    /* This will show the gradient as a text color rather than element bg. */
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -moz-background-clip: text;
+    -moz-text-fill-color: transparent;
+}

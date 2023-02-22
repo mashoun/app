@@ -1,0 +1,24 @@
+@media (max-width:992px) {
+    header>nav {
+        display: none;
+    }
+
+    .menu {
+        display: block !important;
+    }
+
+    #slider-md,
+    .line-md {
+        display: block !important;
+    }
+
+    #slider-lg {
+        display: none;
+    }
+
+    .meeting-btn {
+        display: none !important;
+    }
+
+
+}
