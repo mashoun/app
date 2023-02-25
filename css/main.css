@@ -36,9 +36,10 @@ a {
     background: var(--gradient-background);
 }
 
-.bg-extra-abyad{
+.bg-extra-abyad {
     background: var(--gradient-abyad);
 }
+
 .pop {
     font-family: 'Poppins', sans-serif;
     margin: 0;
@@ -65,6 +66,9 @@ a {
 .fs-small {
     font-size: smaller !important;
 }
+.fs-xsmall{
+    font-size: xx-small !important;
+}
 
 .ls-2 {
     letter-spacing: 2px;
@@ -88,7 +92,12 @@ a {
 }
 
 /* header */
-body {
+/* body {
+    background: var(--gradient-background);
+} */
+
+.bg-body {
+
     background: var(--gradient-background);
 }
 
@@ -184,4 +193,8 @@ header>nav {
     -webkit-text-fill-color: transparent;
     -moz-background-clip: text;
     -moz-text-fill-color: transparent;
+}
+
+.blur {
+    filter: blur(5px);
 }
