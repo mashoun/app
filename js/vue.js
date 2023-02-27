@@ -127,7 +127,7 @@ app.component('navbar-section', {
     `
     
     <header id="home" class="w-100 bg-extra-abyad shadow-sm p-3 px-lg-4 d-flex justify-content-between align-items-center pop">
-        <a href="./" class="d-flex justify-content-start align-items-center gap-3">
+        <a :href="env('/')" class="d-flex justify-content-start align-items-center gap-3">
             <img src="https://drive.google.com/uc?export=view&id=1carhdDO1t8HQlqGYBC9ad57n2WQamfaa" alt="profile pic" class="img-fluid rounded-pill shadow skeleton" width="40" height="40">
             <h1 class="fs-4 text m-0"> Mahmoud Mashoun </h1>
         </a>
@@ -620,12 +620,12 @@ app.component('blogs-section', {
   data() {
     return {
       blogs: [
-        'https://picsum.photos/1080',
-        'https://picsum.photos/1081',
-        'https://picsum.photos/1082',
-        'https://picsum.photos/1083',
-        'https://picsum.photos/1084',
-        'https://picsum.photos/1085',
+        'https://picsum.photos/1920/1080',
+        'https://picsum.photos/1920/1080',
+        'https://picsum.photos/1920/1080',
+        'https://picsum.photos/1920/1080',
+        'https://picsum.photos/1920/1080',
+        'https://picsum.photos/1920/1080',
       ]
     }
   },

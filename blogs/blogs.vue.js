@@ -1,29 +1,91 @@
 const app = Vue.createApp({
-    data() {
-        return {
-            title: 'Blog1',
+  data() {
+    return {
+      title: 'Blog1',
+      comments:[
+        {
+          email:'user@domain.com',
+          show:true,
+          id:'comment-1',
+          username:'user1',
+          date:'x-x-2023',
+          comment:'Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum, debitis!'
+        },
+        {
+          email:'user@domain.com',
+          show:false,
+          id:'comment-2',
+          username:'user2',
+          date:'x-x-2023',
+          comment:'Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum, debitis!'
+        },
+        {
+          email:'user@domain.com',
+          show:false,
+          id:'comment-3',
+          username:'user3',
+          date:'x-x-2023',
+          comment:'Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum, debitis!'
+        },
+        {
+          email:'user@domain.com',
+          show:false,
+          id:'comment-4',
+          username:'user4',
+          date:'x-x-2023',
+          comment:'Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum, debitis!'
+        },
+        {
+          email:'user@domain.com',
+          show:false,
+          id:'comment-5',
+          username:'user5',
+          date:'x-x-2023',
+          comment:'Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum, debitis! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptates sit ut repellendus hic sed molestias eum ea architecto blanditiis deserunt facilis assumenda asperiores libero sunt quo, distinctio esse in vitae.'
+        },
+      ],
 
-            imgs: [
-                'https://picsum.photos/1920/1080',
-                'https://picsum.photos/1920/1081',
-                'https://picsum.photos/1920/1082',
-                'https://picsum.photos/1920/1083',
-                'https://picsum.photos/1920/1084',
-                'https://picsum.photos/1920/1085',
-                'https://picsum.photos/1920/1086',
-                'https://picsum.photos/1920/1087',
-                'https://picsum.photos/1920/1088',
-            ],
-        }
+      imgs: [
+        'https://picsum.photos/1920/1080',
+        'https://picsum.photos/1920/1081',
+        'https://picsum.photos/1920/1082',
+        'https://picsum.photos/1920/1083',
+        'https://picsum.photos/1920/1084',
+        'https://picsum.photos/1920/1085',
+        'https://picsum.photos/1920/1086',
+        'https://picsum.photos/1920/1087',
+        'https://picsum.photos/1920/1088',
+      ],
     }
+  },
+  methods: {
+
+    show(x){
+      if(x) return ' show '
+      else return ''
+    },
+
+    env(path) {
+      if (location.href.includes('http://127.0.0.1:5500/')) {
+        // this is in dev mode
+        return path;
+      } else {
+        if (location.href.includes('mashoun.github.io/')) {
+          // in production mode
+          // add /app/ directory to all links
+          return '/app/' + path
+        }
+      }
+    },
+  }
 })
 
 
 // ********** CONTACT SECTION COMPONENT **********
 app.component('footer-section', {
-    template:
-        /*html */
-        `
+  template:
+    /*html */
+    `
       <footer class="py-3 px-2 bg-dark">
         <section id="contact" class="container">
           <div class="row justify-content-between">
