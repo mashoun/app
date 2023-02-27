@@ -22,6 +22,18 @@ const app = Vue.createApp({
     }
   },
   methods: {
+    env(path) {
+      if (location.href.includes('http://127.0.0.1:5500/')) {
+        // this is in dev mode
+        return path;
+      } else {
+        if (location.href.includes('mashoun.github.io/')) {
+          // in production mode
+          // add /app/ directory to all links
+          return '/app/' + path
+        }
+      }
+    },
     animateTags() {
       var i = 0;
       var j = 0;
@@ -102,8 +114,8 @@ const app = Vue.createApp({
     this.animateViews(27, 300)
 
 
+  },
 
-  }
 
 })
 
@@ -123,7 +135,7 @@ app.component('navbar-section', {
             <a href="./">Home</a>
             <a href="./#experience">Experience</a>
             <a href="">Collaborations</a>
-            <a href="/blogs/">Blogs</a>
+            <a :href="env('/blogs/')">Blogs</a>
         </nav>
         <svg role="button" data-bs-toggle="dropdown" xmlns="http://www.w3.org/2000/svg" width="20" height="20"
             fill="currentColor" class="menu text-secondary bi bi-three-dots-vertical" viewBox="0 0 16 16">
@@ -157,7 +169,22 @@ app.component('navbar-section', {
             </a>
         </div>
     </header>
-    `
+    `,
+  methods: {
+
+    env(path) {
+      if (location.href.includes('http://127.0.0.1:5500/')) {
+        // this is in dev mode
+        return path;
+      } else {
+        if (location.href.includes('mashoun.github.io/')) {
+          // in production mode
+          // add /app/ directory to all links
+          return '/app' + path
+        }
+      }
+    },
+  }
 })
 // ********** NAVIGATION BAR COMPONENT **********
 
@@ -568,7 +595,7 @@ app.component('blogs-section', {
       <div class="row my-5 justify-content-start align-items-center">
 
         <div class="col-12 col-md-6 col-xl-4 p-2" v-for="i in blogs">
-          <a href="/blogs/blog1" class="bg-extra-abyad shadow-sm p-3 d-flex flex-column rounded">
+          <a :href="env('/blogs/blog1')" class="bg-extra-abyad shadow-sm p-3 d-flex flex-column rounded">
             <div class="d-flex gap-3">
             
             <img :src="i" alt="blog" class="img-fluid rounded skeleton" width="120">
@@ -601,6 +628,21 @@ app.component('blogs-section', {
         'https://picsum.photos/1085',
       ]
     }
+  },
+  methods: {
+
+    env(path) {
+      if (location.href.includes('http://127.0.0.1:5500/')) {
+        // this is in dev mode
+        return path;
+      } else {
+        if (location.href.includes('mashoun.github.io/')) {
+          // in production mode
+          // add /app/ directory to all links
+          return '/app/' + path
+        }
+      }
+    },
   }
 })
 // ********** BLOGS SECTION COMPONENT **********
