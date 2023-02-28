@@ -128,7 +128,7 @@ app.component('navbar-section', {
     
     <header id="home" class="w-100 bg-extra-abyad shadow-sm p-3 px-lg-4 d-flex justify-content-between align-items-center pop">
         <a :href="env('/')" class="d-flex justify-content-start align-items-center gap-3">
-            <img src="https://drive.google.com/uc?export=view&id=1carhdDO1t8HQlqGYBC9ad57n2WQamfaa" alt="profile pic" class="img-fluid rounded-pill shadow skeleton" width="50" height="50">
+            <img src="https://drive.google.com/uc?export=view&id=1carhdDO1t8HQlqGYBC9ad57n2WQamfaa" alt="profile pic" class="img-fluid rounded-pill shadow skeleton" width="40" height="40">
             <div class="d-flex flex-column">
                 <h1 class="fs-5 text-secondary m-0 pop"> <strong>Mahmoud Mashoun</strong> </h1>
                 <h6 class="fs-xsmall pop text-secondary">Full Stack Web Dev.</h6>
@@ -504,7 +504,7 @@ app.component('experience-section', {
       </h2>
       <div class="row justify-content-evenly my-5">
         <div class="col-12 col-lg-4 p-2 d-flex justify-content-center align-items-center flex-column">
-          <div class="bg-extra-abyad shadow-sm rounded p-3 d-flex justify-content-start gap-3 flex-column">
+          <div class="bg-light shadow-sm rounded p-3 d-flex justify-content-start gap-3 flex-column">
             <div class="d-flex align-items-center gap-3">
               <span class="material-symbols-outlined fs-1 text-gradient">
                 install_desktop
@@ -516,7 +516,7 @@ app.component('experience-section', {
           </div>
         </div>
         <div class="col-12 col-lg-4 p-2 d-flex justify-content-center align-items-center flex-column">
-          <div class="bg-extra-abyad shadow-sm rounded p-3 d-flex justify-content-start gap-3 flex-column">
+          <div class="bg-light shadow-sm rounded p-3 d-flex justify-content-start gap-3 flex-column">
             <div class="d-flex align-items-center gap-3">
               <span class="material-symbols-outlined fs-1 text-gradient">
                 web
@@ -528,7 +528,7 @@ app.component('experience-section', {
           </div>
         </div>
         <div class="col-12 col-lg-4 p-2 d-flex justify-content-center align-items-center flex-column">
-          <div class="bg-extra-abyad shadow-sm rounded p-3 d-flex justify-content-start gap-3 flex-column">
+          <div class="bg-light shadow-sm rounded p-3 d-flex justify-content-start gap-3 flex-column">
             <div class="d-flex align-items-center gap-3">
               <span class="material-symbols-outlined fs-1 text-gradient">
                 extension
@@ -540,7 +540,7 @@ app.component('experience-section', {
           </div>
         </div>
         <div class="col-12 col-lg-4 p-2 d-flex justify-content-center align-items-center flex-column">
-          <div class="bg-extra-abyad shadow-sm rounded p-3 d-flex justify-content-start gap-3 flex-column">
+          <div class="bg-light shadow-sm rounded p-3 d-flex justify-content-start gap-3 flex-column">
             <div class="d-flex align-items-center gap-3">
               <span class="material-symbols-outlined fs-1 text-gradient">
                 terminal
@@ -552,7 +552,7 @@ app.component('experience-section', {
           </div>
         </div>
         <div class="col-12 col-lg-4 p-2 d-flex justify-content-center align-items-center flex-column">
-          <div class="bg-extra-abyad shadow-sm rounded p-3 d-flex justify-content-start gap-3 flex-column">
+          <div class="bg-light shadow-sm rounded p-3 d-flex justify-content-start gap-3 flex-column">
             <div class="d-flex align-items-center gap-3">
               <span class="material-symbols-outlined fs-1 text-gradient">
                 insights
@@ -564,7 +564,7 @@ app.component('experience-section', {
           </div>
         </div>
         <div class="col-12 col-lg-4 p-2 d-flex justify-content-center align-items-center flex-column">
-          <div class="bg-extra-abyad shadow-sm rounded p-3 d-flex justify-content-start gap-3 flex-column">
+          <div class="bg-light shadow-sm rounded p-3 d-flex justify-content-start gap-3 flex-column">
             <div class="d-flex align-items-center gap-3">
               <span class="material-symbols-outlined fs-1 text-gradient">
                 travel_explore
@@ -592,7 +592,10 @@ app.component('blogs-section', {
     <section id="blogs" class="container my-5">
 
       <h1 class="bebas display-5 text">Blogs Tag Line</h1>
-      <h2 class="pop fs-6 text-secondary">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi, consequatur!
+      <h2 class="pop fs-6 text-secondary">
+        <span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi, consequatur!</span>
+        <i class="bi bi-dot"></i>
+        <a :href="env('blogs/')" class="text-secondary" title="Check all of my blogs"> <u>all blogs </u><i class="bi bi-caret-right-fill "></i> </a>
       </h2>
 
       <!-- Blogs Collection -->
@@ -807,14 +810,14 @@ app.component('footer-section', {
       <hr class="container text-light my-4">
       <section class="container mb-3">
         <div class="row justify-content-between gap-3">
-          <h6 class="col-12 col-lg-7 col-xl-8 fs-4 pop text-abyad text-center text-lg-start m-0">Mahmoud Mashoun</h6>
+          <h6 class="col-12 col-lg-7 col-xl-8 fs-4 pop text-abyad text-center text-lg-start m-0 ls-1"> <strong>Mahmoud Mashoun</strong> </h6>
           <div class="col-12 col-lg-3 d-flex align-items-center justify-content-center gap-3">
-            <a href=""><i class="social-media-icon fs-4 bi bi-chat-square-dots text-secondary"></i></a>
             <a href=""><i class="social-media-icon fs-4 bi bi-linkedin text-secondary"></i></a>
             <a href=""><i class="social-media-icon fs-4 bi bi-whatsapp text-secondary"></i></a>
             <a href=""><i class="social-media-icon fs-4 bi bi-github text-secondary"></i></a>
             <a href=""><i class="social-media-icon fs-4 bi bi-youtube text-secondary"></i></a>
             <a href=""><i class="social-media-icon fs-4 bi bi-stack-overflow text-secondary"></i></a>
+            <a href=""><i class="social-media-icon fs-4 bi bi-chat-square-dots text-secondary"></i></a>
           </div>
         </div>
       </section>
