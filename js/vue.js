@@ -128,8 +128,12 @@ app.component('navbar-section', {
     
     <header id="home" class="w-100 bg-extra-abyad shadow-sm p-3 px-lg-4 d-flex justify-content-between align-items-center pop">
         <a :href="env('/')" class="d-flex justify-content-start align-items-center gap-3">
-            <img src="https://drive.google.com/uc?export=view&id=1carhdDO1t8HQlqGYBC9ad57n2WQamfaa" alt="profile pic" class="img-fluid rounded-pill shadow skeleton" width="40" height="40">
-            <h1 class="fs-4 text m-0"> Mahmoud Mashoun </h1>
+            <img src="https://drive.google.com/uc?export=view&id=1carhdDO1t8HQlqGYBC9ad57n2WQamfaa" alt="profile pic" class="img-fluid rounded-pill shadow skeleton" width="50" height="50">
+            <div class="d-flex flex-column">
+                <h1 class="fs-5 text-secondary m-0 pop"> <strong>Mahmoud Mashoun</strong> </h1>
+                <h6 class="fs-xsmall pop text-secondary">Full Stack Web Dev.</h6>
+            </div>
+            
         </a>
         <nav class="gap-3 align-items-center justify-content-center text-secondary">
             <a href="./">Home</a>
@@ -602,7 +606,7 @@ app.component('blogs-section', {
               <div class="d-flex gap-1 flex-column justify-content-between">
                 <h3 class="text-primary bebas fs-4 m-0"> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed,
                   dicta? ...</h3>
-                <div class="fs-small text-secondary d-flex gap-2 align-items-center">
+                <div class="fs-small text-secondary d-flex gap-1 align-items-center">
                   <span class="material-symbols-outlined fs-6">
                     schedule
                   </span>
@@ -805,7 +809,7 @@ app.component('footer-section', {
         <div class="row justify-content-between gap-3">
           <h6 class="col-12 col-lg-7 col-xl-8 fs-4 pop text-abyad text-center text-lg-start m-0">Mahmoud Mashoun</h6>
           <div class="col-12 col-lg-3 d-flex align-items-center justify-content-center gap-3">
-            <a href=""><i class="social-media-icon fs-4 bi bi-share-fill text-secondary"></i></a>
+            <a href=""><i class="social-media-icon fs-4 bi bi-chat-square-dots text-secondary"></i></a>
             <a href=""><i class="social-media-icon fs-4 bi bi-linkedin text-secondary"></i></a>
             <a href=""><i class="social-media-icon fs-4 bi bi-whatsapp text-secondary"></i></a>
             <a href=""><i class="social-media-icon fs-4 bi bi-github text-secondary"></i></a>

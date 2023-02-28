@@ -35,24 +35,27 @@
             <h6 class="m-0 text-secondary fs-6">Lorem ipsum dolor sit amet...</h6>
         </div>
     </header>
-    <main class="container mt-3 mb-5">
-        <div class="row justify-content-start">
+    <main class="container mt-1 mb-5">
+        <div class="row justify-content-center">
             <!-- A Blog -->
-            <article class="col-12 col-lg-5 px-2 py-3">
-                <div class="rounded shadow p-3">
+            <article class="col-12 col-lg-7 px-2 py-3">
+                <div class="rounded shadow p-3 bg-light">
                     <!-- blog header -->
                     <div class="bg-light d-flex align-items-center justify-content-between px-2 py-3 shadow-sm rounded">
-                        <a :href="env('../../')" class="d-flex justify-content-start align-items-center gap-2">
+                        <a :href="env('/')" class="d-flex justify-content-start align-items-center gap-2">
                             <img src="https://drive.google.com/uc?export=view&id=1carhdDO1t8HQlqGYBC9ad57n2WQamfaa"
                                 alt="profile pic" class="img-fluid rounded-pill shadow skeleton" width="40" height="40">
-                            <h1 class="fs-5 text-secondary m-0 pop"> Mahmoud Mashoun </h1>
+                            <div class="d-flex flex-column">
+                                <h1 class="fs-5 text-secondary m-0 pop"> <strong>Mahmoud Mashoun</strong> </h1>
+                                <h6 class="fs-xsmall pop text-secondary">Full Stack Web Dev.</h6>
+                            </div>
                         </a>
                         <div class="d-flex align-items-center gap-2">
                             <i class="bi bi-three-dots-vertical fs-5 text-secondary" data-bs-toggle="dropdown"></i>
 
                             <ul class="dropdown-menu shadow-sm p-2 pop bg-abyad">
                                 <div class="scale-in-center">
-                                    <li><a class="dropdown-item" :href="env('../../')">Home Page</a></li>
+                                    <li><a class="dropdown-item" :href="env('/')">Home Page</a></li>
                                     <li><a class="dropdown-item" href="#experience">Work Experience</a></li>
                                     <li><a class="dropdown-item" href="/blogs">Blogs & FAQs</a></li>
                                     <li><a class="dropdown-item" href="/terms_and_conditions">Terms & Conditions</a>
@@ -120,7 +123,7 @@
                                 <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger fs-xsmall">+99
                                 </span>
                             </div> -->
-
+                            <i class="bi bi-chat-square-dots fs-5 text-secondary"></i>
                             <i class="bi bi-share-fill fs-6 text-secondary"></i>
                         </div>
                     </div>
@@ -129,11 +132,11 @@
             </article>
 
             <!-- Comment Section -->
-            <section class="col-12 col-lg-4 px-2 py-3">
+            <section class="col-12 col-lg-5 px-2 py-3">
                 <div class="bg-light p-3 shadow-sm rounded d-flex flex-column gap-3">
                     <div class="d-flex flex-column">
-                        <!-- <i class="bi bi-chat-square-dots fs-2 text-gradient"></i> -->
-                        <h3 class="fs-4 pop text-gradient text-start">Comments Tagline</h3>
+
+                        <h3 class="fs-2 bebas text-secondary text-start">Comments Tagline</h3>
                         <!-- <div class="d-flex gap-2 align-items-center">
                             <i class="bi bi-chat-square-dots fs-2 text-gradient"></i>
                             <h3 class="fs-3 pop text">Comments Tagline</h3>
@@ -141,46 +144,41 @@
                         <p class="pop text-secondary fs-small">Lorem ipsum dolor sit, amet consectetur adipisicing elit.
                             Hic, quis.</p>
                     </div>
-                
+
                     <!-- comment box -->
                     <div class="pop accordion accordion-flush rounded shadow-sm" id="comment-box">
 
                         <div class="accordion-item" v-for="c in comments">
-                            <div class="point p-3 bg-extra-abyad d-flex justify-content-between" data-bs-toggle="collapse"
-                                :data-bs-target="'#'+c.id">
+                            <div class="point p-3 bg-extra-abyad d-flex justify-content-between"
+                                data-bs-toggle="collapse" :data-bs-target="'#'+c.id">
                                 <div class="d-flex flex-column">
                                     <h6 class="text-primary fs-6 pop"><i class="bi bi-person-circle"></i> {{c.username}}
                                     </h6>
                                 </div>
                                 <i class="bi bi-chevron-expand"></i>
                             </div>
-                            <div :id="c.id" :class="'accordion-collapse collapse'+ show(c.show)" data-bs-parent="#comment-box">
+                            <div :id="c.id" :class="'accordion-collapse collapse'+ show(c.show)"
+                                data-bs-parent="#comment-box">
                                 <div class="accordion-body">
                                     <p class="text-secondary fs-small text-justify">{{c.comment}}</p>
-                                    <small class="fs-xsmall text-secondary"><i class="bi bi-clock"></i> {{c.date}} </small>
+                                    <small class="fs-xsmall text-secondary"><i class="bi bi-clock"></i> {{c.date}}
+                                    </small>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="pop">
                         <!-- Add a comment -->
-                        <textarea class="form-control bg-light" placeholder="Add comment"></textarea>
+                        <textarea class="form-control bg-extra-abyad" placeholder="Add comment"></textarea>
                         <!-- submit ur comment -->
                         <div class="input-group mt-2">
                             <input type="email" class="form-control py-2 bg-light" placeholder="Enter your email"
                                 aria-label="Recipient's username" aria-describedby="button-addon2">
-                            <button class="btn btn-primary px-3" type="button"><span
-                                    class="pop">Submit</span></button>
+                            <button class="btn btn-primary px-3" type="button"><span class="pop">Submit</span></button>
                         </div>
                     </div>
                 </div>
             </section>
-
-            <!-- Check Also section -->
-           
-
-
-
 
         </div>
     </main>

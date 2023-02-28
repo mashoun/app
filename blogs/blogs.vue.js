@@ -235,9 +235,9 @@ app.component('footer-section', {
         <hr class="container text-light my-4">
         <section class="container mb-3">
           <div class="row justify-content-between gap-3">
-            <h6 class="col-12 col-lg-7 col-xl-8 fs-4 pop text-abyad text-center text-lg-start m-0">Mahmoud Mashoun</h6>
+            <h6 class="col-12 col-lg-7 col-xl-8 fs-4 pop text-abyad text-center text-lg-start m-0 ls-1"> <strong>Mahmoud Mashoun</strong> </h6>
             <div class="col-12 col-lg-3 d-flex align-items-center justify-content-center gap-3">
-              <a href=""><i class="social-media-icon fs-4 bi bi-share-fill text-secondary"></i></a>
+              <a href=""><i class="social-media-icon fs-4 bi bi-chat-square-dots text-secondary"></i></a>
               <a href=""><i class="social-media-icon fs-4 bi bi-linkedin text-secondary"></i></a>
               <a href=""><i class="social-media-icon fs-4 bi bi-whatsapp text-secondary"></i></a>
               <a href=""><i class="social-media-icon fs-4 bi bi-github text-secondary"></i></a>
