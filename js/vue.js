@@ -8,6 +8,48 @@ const app = Vue.createApp({
       tagline: '',
       tags: ['Full Stack Web Developer', 'Vuegle Stack Developer', 'Freelance Web Developer'],
       counterYears: 200,
+      comments: [
+        {
+          email: 'user@domain.com',
+          show: true,
+          id: 'comment-1',
+          username: 'user1',
+          date: 'x-x-2023',
+          comment: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum, debitis!'
+        },
+        {
+          email: 'user@domain.com',
+          show: false,
+          id: 'comment-2',
+          username: 'user2',
+          date: 'x-x-2023',
+          comment: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum, debitis!'
+        },
+        {
+          email: 'user@domain.com',
+          show: false,
+          id: 'comment-3',
+          username: 'user3',
+          date: 'x-x-2023',
+          comment: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum, debitis!'
+        },
+        {
+          email: 'user@domain.com',
+          show: false,
+          id: 'comment-4',
+          username: 'user4',
+          date: 'x-x-2023',
+          comment: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum, debitis!'
+        },
+        {
+          email: 'user@domain.com',
+          show: false,
+          id: 'comment-5',
+          username: 'user5',
+          date: 'x-x-2023',
+          comment: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum, debitis! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptates sit ut repellendus hic sed molestias eum ea architecto blanditiis deserunt facilis assumenda asperiores libero sunt quo, distinctio esse in vitae.'
+        },
+      ],
       imgs: [
         'https://picsum.photos/1920/1080',
         'https://picsum.photos/1920/1081',
@@ -22,6 +64,67 @@ const app = Vue.createApp({
     }
   },
   methods: {
+
+    show(x) {
+      // showing the first commnent as default
+      if (x) return ' show '
+      else return ''
+    },
+    timo(next) {
+      // Thu Mar 02 2023 14:24:38 GMT+0200 (Eastern European Standard Time)
+      // year-month-day
+
+      var result = '';
+      const currentDate = new Date()
+      const nextDate = new Date(next)
+      // console.log(currentDate, nextDate)
+      // console.log(currentDate.getDate(), nextDate.getDate())
+      // console.log((currentDate.getDate()) - (nextDate.getDate()))
+
+      // // Calculating Years
+      var years = (currentDate.getFullYear()) - (nextDate.getFullYear())
+      console.log('years = ' + years)
+      if (years == 1) {
+        return `${years} year ago`
+      } else {
+        if (years >= 2) {
+          return `${years} years ago`
+        }
+      }
+
+      // Calculating Month
+      var months = (currentDate.getMonth() + 1) - (nextDate.getMonth() + 1)
+      if (months == 1) {
+        result += `${months} month ago`
+        return result;
+      } else {
+        if (months >= 2) {
+          result += `${months} months ago`
+          return result;
+        }
+      }
+
+      // Calculating Days
+      var days = (currentDate.getDate()) - (nextDate.getDate());
+      if (days == 0) {
+        result += 'Today'
+      } else {
+        if (days == 1) {
+          result += 'Yesterday'
+
+        } else {
+          if (days >= 2) {
+            result += `${days} days ago`
+          }
+        }
+      }
+
+
+      return result;
+
+
+    },
+
     env(path) {
       if (location.href.includes('http://127.0.0.1:5500/')) {
         // this is in dev mode
@@ -110,7 +213,7 @@ const app = Vue.createApp({
     var d = new Date()
     this.animateTags()
     this.animateWebProjects(50, 400)
-    this.animateYears(((parseInt(d.getFullYear())) - 2020), 1000)
+    this.animateYears(((parseInt(d.getUTCFullYear())) - 2020), 1000)
     this.animateViews(27, 300)
 
 
@@ -141,11 +244,8 @@ app.component('navbar-section', {
             <a href="">Collaborations</a>
             <a :href="env('/blogs/')">Blogs</a>
         </nav>
-        <svg role="button" data-bs-toggle="dropdown" xmlns="http://www.w3.org/2000/svg" width="20" height="20"
-            fill="currentColor" class="menu text-secondary bi bi-three-dots-vertical" viewBox="0 0 16 16">
-            <path
-            d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z" />
-        </svg>
+        <i class="bi bi-three-dots-vertical menu text-secondary fs-4" data-bs-toggle="dropdown"></i>
+        
         <ul class="dropdown-menu shadow-sm p-2 pop bg-abyad">
             <div class="scale-in-center">
             <li><a class="dropdown-item" href="#">Home Page</a></li>
@@ -200,179 +300,122 @@ app.component('hero-section', {
     /*html */
     `
     <section>
-        <div class="container">
+      <div class="container">
         <div class="row justify-content-between gap-3 py-4">
-            <section id="slider-md" class="col-md-12 col-lg-5">
-            <div class="swiper">
-                <div class="swiper-wrapper">
-                <div class="swiper-slide" v-for="i in imgs">
-                <div class="swiper-zoom-container skeleton rounded">
-                  <img :src="i" alt="pic" class="img-fluid rounded skeleton" width="1920" height="1080">
-                </div>
-                </div>
-                </div>
-                <div class="swiper-pagination position-static mt-3"></div>
-            </div>
-
-            <div class="mt-3 d-flex flex-column justify-content-center gap-2">
-                <div class="d-flex justify-content-between align-items-center">
-                <h2 class="fs-1 bebas text"># Collaborations and Events </h2>
-                </div>
-
-                <h3 class="fs-5 pop text-primary"> Lorem ipsum dolor sit amet.</h3>
-                <p class="pop fs-6 text-justify text-secondary">Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Odit mollitia nisi possimus, ipsam sequi, fuga
-                praesentium eos necessitatibus quod optio dolorem molestiae provident dignissimos recusandae dolores
-                consequatur? Iusto, enim nam?
-                </p>
-                <div class="d-flex flex-wrap justify-content-start align-items-center gap-2">
-                <a href="https://www.youtube.com/live/HNtGQNbOfeE?feature=share"
-                    class="bg-dark rounded-pill py-1 px-3 d-flex justify-content-between align-items-center gap-1">
-                    <span class="fs-6 material-symbols-outlined text-warning">
-                    link
-                    </span>
-                    <span class="fs-small text-light pop text-center">Build your 1st Chrome Extension</span>
-                </a>
-
-                <a href="https://www.youtube.com/live/HNtGQNbOfeE?feature=share"
-                    class="bg-dark rounded-pill py-1 px-3 d-flex justify-content-between align-items-center gap-1">
-                    <span class="fs-6 material-symbols-outlined text-warning">
-                    link
-                    </span>
-                    <span class="fs-small text-light pop text-center">Dynamic vs Static Websites</span>
-                </a>
-
-                <a href="https://www.youtube.com/live/HNtGQNbOfeE?feature=share"
-                    class="bg-dark rounded-pill py-1 px-3 d-flex justify-content-between align-items-center gap-1">
-                    <span class="fs-6 material-symbols-outlined text-warning">
-                    link
-                    </span>
-                    <span class="fs-small text-light pop text-center">Google Apps Script Crash Course 2022</span>
-                </a>
-                <a href="https://www.youtube.com/live/HNtGQNbOfeE?feature=share"
-                    class="bg-dark rounded-pill py-1 px-3 d-flex justify-content-between align-items-center gap-1">
-                    <span class="fs-6 material-symbols-outlined text-warning">
-                    link
-                    </span>
-                    <span class="fs-small text-light pop text-center">Freelancing in Lebanon</span>
-                </a>
-                </div>
-            </div>
-            </section>
-            <section class="col-md-12 col-lg-6">
+          <section class="col-md-12 col-lg-6">
             <hr class="container line-md">
             <div class="d-flex justify-content-center flex-column gap-4">
-                <div class="d-flex justify-content-center flex-column gap-2">
+              <div class="d-flex justify-content-center flex-column gap-2">
                 <h1 class="display-5 bebas text-gradient "># {{tagline}}<strong class="pop blink text-gradient">_</strong>
                 </h1>
-
+  
                 <h1 class="fs-4 pop text-primary">Building Innovative Web Solutions with Expertise in Google
-                    Apps Script & VueJs</h1>
+                  Apps Script & VueJs</h1>
                 <p class="text-secondary pop text-justify">
-                    Lorem3 ipsum dolor sit amet consectetur adipisicing elit. Dicta, sunt! Incidunt illo aliquid explicabo
-                    reprehenderit quae quis ea repellendus sapiente laudantium expedita perspiciatis, aut quibusdam. Amet
-                    accusamus sint sunt facere?
+                  Lorem3 ipsum dolor sit amet consectetur adipisicing elit. Dicta, sunt! Incidunt illo aliquid explicabo
+                  reprehenderit quae quis ea repellendus sapiente laudantium expedita perspiciatis, aut quibusdam. Amet
+                  accusamus sint sunt facere?
                 </p>
                 <p class="text-secondary pop text-justify">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta, sunt! Incidunt illo aliquid explicabo
-                    reprehenderit quae quis ea repellendus sapiente laudantium expedita perspiciatis, aut quibusdam. Amet
-                    accusamus sint sunt facere?
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta, sunt! Incidunt illo aliquid explicabo
+                  reprehenderit quae quis ea repellendus sapiente laudantium expedita perspiciatis, aut quibusdam. Amet
+                  accusamus sint sunt facere?
                 </p>
                 <p class="text-secondary pop text-justify">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta, sunt! Incidunt illo aliquid explicabo
-                    reprehenderit quae quis ea repellendus sapiente laudantium expedita perspiciatis, aut quibusdam. Amet
-                    accusamus sint sunt facere?
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta, sunt! Incidunt illo aliquid explicabo
+                  reprehenderit quae quis ea repellendus sapiente laudantium expedita perspiciatis, aut quibusdam. Amet
+                  accusamus sint sunt facere?
                 </p>
-                </div>
-                <!-- Counters -->
-                <div class="">
+              </div>
+              <!-- Counters -->
+              <div class="">
                 <h2 class="pop text-justify fs-4 text-primary">Lorem ipsum dolor sit amet.</h2>
                 <p class="text-secondary pop text-justify fs-6">
-                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quae aliquid odio enim dicta illum quis!
+                  Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quae aliquid odio enim dicta illum quis!
                 </p>
-                </div>
-                <div class="row justify-content-between">
+              </div>
+              <div class="row justify-content-between">
                 <div class="col-md-4 col-12  p-2 point" @click="animateWebProjects(50,200)">
-                    <div class="bg-light shadow-sm rounded d-flex justify-content-start align-items-center flex-column p-3">
+                  <div class="bg-light shadow-sm rounded d-flex justify-content-start align-items-center flex-column p-3">
                     <span class="fs-1 text-gradient bebas">{{webProjects}}+</span>
                     <strong class="fs-6 text-secondary pop">Web Projects</strong>
-                    </div>
+                  </div>
                 </div>
                 <div class="col-md-4 col-12  p-2 point" @click="animateYears(3, 1000)">
-                    <div class="bg-light shadow-sm rounded d-flex justify-content-start align-items-center flex-column p-3">
+                  <div class="bg-light shadow-sm rounded d-flex justify-content-start align-items-center flex-column p-3">
                     <span class="fs-1 text-gradient bebas">{{years}}+</span>
                     <strong class="fs-6 text-secondary pop">Years of Experience</strong>
-                    </div>
+                  </div>
                 </div>
                 <div class="col-md-4 col-12 p-2 point" @click="animateViews(27,300)">
-                    <div class="bg-light shadow-sm rounded d-flex justify-content-start align-items-center flex-column p-3">
+                  <div class="bg-light shadow-sm rounded d-flex justify-content-start align-items-center flex-column p-3">
                     <span class="fs-1 text-gradient bebas">{{views}}K+</span>
                     <strong class="fs-6 text-secondary pop">Youtube views</strong>
-                    </div>
+                  </div>
                 </div>
-                </div>
+              </div>
             </div>
-            </section>
-            <section id="slider-lg" class="col-md-12 col-lg-5">
+          </section>
+          <section class="order-first order-lg-last col-md-12 col-lg-5">
             <div class="swiper">
-                <div class="swiper-wrapper">
+              <div class="swiper-wrapper">
                 <div class="swiper-slide" v-for="i in imgs">
-                    <div class="swiper-zoom-container skeleton rounded">
-                      <img :src="i" alt="pic" class="img-fluid rounded skeleton" width="1920" height="1080">
-                    </div>
+                  <div class="swiper-zoom-container skeleton rounded">
+                    <img :src="i" alt="pic" class="img-fluid rounded skeleton" width="1920" height="1080">
+                  </div>
                 </div>
-                </div>
-                <div class="swiper-pagination position-static mt-2"></div>
+              </div>
+              <div class="swiper-pagination position-static mt-2"></div>
             </div>
-
+  
             <div class="mt-3 d-flex flex-column justify-content-center gap-2">
-                <div class="d-flex justify-content-between align-items-center">
+              <div class="d-flex justify-content-between align-items-center">
                 <h2 class="display-6 bebas text"># Collaborations and Events</h2>
-                </div>
-
-                <h3 class="fs-5 pop text-primary"> Lorem ipsum dolor sit amet. </h3>
-                <p class="pop fs-6 text-justify text-secondary">Lorem ipsum dolor sit amet consectetur adipisicing elit.
+              </div>
+  
+              <h3 class="fs-5 pop text-primary"> Lorem ipsum dolor sit amet. </h3>
+              <p class="pop fs-6 text-justify text-secondary">Lorem ipsum dolor sit amet consectetur adipisicing elit.
                 Odit mollitia nisi possimus, ipsam sequi, fuga
                 praesentium eos necessitatibus quod optio dolorem molestiae provident dignissimos recusandae dolores
                 consequatur? Iusto, enim nam?
-                </p>
-                <div class="d-flex flex-wrap justify-content-start align-items-center gap-2">
+              </p>
+              <div class="d-flex flex-wrap justify-content-start align-items-center gap-2">
                 <a href="https://www.youtube.com/live/HNtGQNbOfeE?feature=share"
-                    class="bg-dark rounded-pill py-1 px-3 d-flex justify-content-between align-items-center gap-1">
-                    <span class="fs-6 material-symbols-outlined text-warning">
+                  class="bg-dark rounded-pill py-1 px-3 d-flex justify-content-between align-items-center gap-1">
+                  <span class="fs-6 material-symbols-outlined text-warning">
                     link
-                    </span>
-                    <span class="fs-small text-light pop text-center">Build your 1st Chrome Extension</span>
+                  </span>
+                  <span class="fs-small text-light pop text-center">Build your 1st Chrome Extension</span>
                 </a>
-
+  
                 <a href="https://www.youtube.com/live/HNtGQNbOfeE?feature=share"
-                    class="bg-dark rounded-pill py-1 px-3 d-flex justify-content-between align-items-center gap-1">
-                    <span class="fs-6 material-symbols-outlined text-warning">
+                  class="bg-dark rounded-pill py-1 px-3 d-flex justify-content-between align-items-center gap-1">
+                  <span class="fs-6 material-symbols-outlined text-warning">
                     link
-                    </span>
-                    <span class="fs-small text-light pop text-center">Dynamic vs Static Websites</span>
+                  </span>
+                  <span class="fs-small text-light pop text-center">Dynamic vs Static Websites</span>
                 </a>
-
+  
                 <a href="https://www.youtube.com/live/HNtGQNbOfeE?feature=share"
-                    class="bg-dark rounded-pill py-1 px-3 d-flex justify-content-between align-items-center gap-1">
-                    <span class="fs-6 material-symbols-outlined text-warning">
+                  class="bg-dark rounded-pill py-1 px-3 d-flex justify-content-between align-items-center gap-1">
+                  <span class="fs-6 material-symbols-outlined text-warning">
                     link
-                    </span>
-                    <span class="fs-small text-light pop text-center">Google Apps Script Crash Course 2022</span>
+                  </span>
+                  <span class="fs-small text-light pop text-center">Google Apps Script Crash Course 2022</span>
                 </a>
                 <a href="https://www.youtube.com/live/HNtGQNbOfeE?feature=share"
-                    class="bg-dark rounded-pill py-1 px-3 d-flex justify-content-between align-items-center gap-1">
-                    <span class="fs-6 material-symbols-outlined text-warning">
+                  class="bg-dark rounded-pill py-1 px-3 d-flex justify-content-between align-items-center gap-1">
+                  <span class="fs-6 material-symbols-outlined text-warning">
                     link
-                    </span>
-                    <span class="fs-small text-light pop text-center">Freelancing in Lebanon</span>
+                  </span>
+                  <span class="fs-small text-light pop text-center">Freelancing in Lebanon</span>
                 </a>
-                </div>
+              </div>
             </div>
-            </section>
+          </section>
         </div>
-        </div>
-    </section>    
+      </div>
+    </section> 
     `,
   data() {
     return {
@@ -481,7 +524,7 @@ app.component('hero-section', {
     var d = new Date()
     this.animateTags()
     this.animateWebProjects(50, 400)
-    this.animateYears(((parseInt(d.getFullYear())) - 2020), 1000)
+    this.animateYears(((parseInt(d.getUTCFullYear())) - 2020), 1000)
     this.animateViews(27, 300)
 
 
@@ -502,9 +545,9 @@ app.component('experience-section', {
       <h1 class="bebas display-5 text">Experience Tag Line</h1>
       <h2 class="pop fs-6 text-secondary">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi, consequatur!
       </h2>
-      <div class="row justify-content-evenly my-5">
-        <div class="col-12 col-lg-4 p-2 d-flex justify-content-center align-items-center flex-column">
-          <div class="bg-light shadow-sm rounded p-3 d-flex justify-content-start gap-3 flex-column">
+      <div class="row justify-content-evenly my-5 g-3">
+        <div class="col-12 col-lg-4 d-flex justify-content-center align-items-center flex-column">
+          <a :href="env('/exp/pwa')" class="bg-light shadow-sm rounded p-3 d-flex justify-content-start gap-3 flex-column">
             <div class="d-flex align-items-center gap-3">
               <span class="material-symbols-outlined fs-1 text-gradient">
                 install_desktop
@@ -513,9 +556,9 @@ app.component('experience-section', {
             </div>
             <p class="text-secondary fs-6 pop">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aspernatur
               itaque laborum saepe magnam, nemo ad?</p>
-          </div>
+          </a>
         </div>
-        <div class="col-12 col-lg-4 p-2 d-flex justify-content-center align-items-center flex-column">
+        <div class="col-12 col-lg-4 d-flex justify-content-center align-items-center flex-column">
           <div class="bg-light shadow-sm rounded p-3 d-flex justify-content-start gap-3 flex-column">
             <div class="d-flex align-items-center gap-3">
               <span class="material-symbols-outlined fs-1 text-gradient">
@@ -527,7 +570,7 @@ app.component('experience-section', {
               itaque laborum saepe magnam, nemo ad?</p>
           </div>
         </div>
-        <div class="col-12 col-lg-4 p-2 d-flex justify-content-center align-items-center flex-column">
+        <div class="col-12 col-lg-4 d-flex justify-content-center align-items-center flex-column">
           <div class="bg-light shadow-sm rounded p-3 d-flex justify-content-start gap-3 flex-column">
             <div class="d-flex align-items-center gap-3">
               <span class="material-symbols-outlined fs-1 text-gradient">
@@ -539,7 +582,7 @@ app.component('experience-section', {
               itaque laborum saepe magnam, nemo ad?</p>
           </div>
         </div>
-        <div class="col-12 col-lg-4 p-2 d-flex justify-content-center align-items-center flex-column">
+        <div class="col-12 col-lg-4 d-flex justify-content-center align-items-center flex-column">
           <div class="bg-light shadow-sm rounded p-3 d-flex justify-content-start gap-3 flex-column">
             <div class="d-flex align-items-center gap-3">
               <span class="material-symbols-outlined fs-1 text-gradient">
@@ -551,7 +594,7 @@ app.component('experience-section', {
               itaque laborum saepe magnam, nemo ad?</p>
           </div>
         </div>
-        <div class="col-12 col-lg-4 p-2 d-flex justify-content-center align-items-center flex-column">
+        <div class="col-12 col-lg-4 d-flex justify-content-center align-items-center flex-column">
           <div class="bg-light shadow-sm rounded p-3 d-flex justify-content-start gap-3 flex-column">
             <div class="d-flex align-items-center gap-3">
               <span class="material-symbols-outlined fs-1 text-gradient">
@@ -563,7 +606,7 @@ app.component('experience-section', {
               itaque laborum saepe magnam, nemo ad?</p>
           </div>
         </div>
-        <div class="col-12 col-lg-4 p-2 d-flex justify-content-center align-items-center flex-column">
+        <div class="col-12 col-lg-4 d-flex justify-content-center align-items-center flex-column">
           <div class="bg-light shadow-sm rounded p-3 d-flex justify-content-start gap-3 flex-column">
             <div class="d-flex align-items-center gap-3">
               <span class="material-symbols-outlined fs-1 text-gradient">
@@ -577,7 +620,22 @@ app.component('experience-section', {
         </div>
       </div>
     </section>
-    `
+    `,
+  methods: {
+
+    env(path) {
+      if (location.href.includes('http://127.0.0.1:5500/')) {
+        // this is in dev mode
+        return path;
+      } else {
+        if (location.href.includes('mashoun.github.io/')) {
+          // in production mode
+          // add /app/ directory to all links
+          return '/app/' + path
+        }
+      }
+    },
+  }
 })
 // ********** EXPERIENCE SECTION COMPONENT **********
 
@@ -595,13 +653,13 @@ app.component('blogs-section', {
       <h2 class="pop fs-6 text-secondary">
         <span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi, consequatur!</span>
         <i class="bi bi-dot"></i>
-        <a :href="env('blogs/')" class="text-secondary" title="Check all of my blogs"> <u>all blogs </u><i class="bi bi-caret-right-fill "></i> </a>
+        <a :href="env('blogs/')" v-if="allBlogs" class="text-secondary" title="Check all of my blogs"> <u>all blogs </u><i class="bi bi-caret-right-fill fs-small"></i> </a>
       </h2>
 
       <!-- Blogs Collection -->
-      <div class="row my-5 justify-content-start align-items-center">
+      <div class="row my-5 justify-content-start align-items-center g-3">
 
-        <div class="col-12 col-md-6 col-xl-4 p-2" v-for="i in blogs">
+        <div class="col-12 col-md-6 col-xl-4" v-for="i in blogs">
           <a :href="env('/blogs/blog1')" class="bg-extra-abyad shadow-sm p-3 d-flex flex-column rounded">
             <div class="d-flex gap-3">
             
@@ -626,6 +684,7 @@ app.component('blogs-section', {
     `,
   data() {
     return {
+      allBlogs: true,
       blogs: [
         'https://picsum.photos/1920/1080',
         'https://picsum.photos/1920/1080',
@@ -637,6 +696,12 @@ app.component('blogs-section', {
     }
   },
   methods: {
+    allBlogsLink() {
+      if (location.href.includes('blogs')) this.allBlogs = false;
+      else {
+        this.allBlogs = true;
+      }
+    },
 
     env(path) {
       if (location.href.includes('http://127.0.0.1:5500/')) {
@@ -650,6 +715,9 @@ app.component('blogs-section', {
         }
       }
     },
+  },
+  mounted() {
+    this.allBlogsLink();
   }
 })
 // ********** BLOGS SECTION COMPONENT **********
