@@ -2,6 +2,7 @@ const app = Vue.createApp({
   data() {
     return {
       webProjects: 0,
+      API:'https://script.google.com/macros/s/AKfycbycBjIHVwuNXFFJQTfyD1NxryPaK8xcg5-fScxLCEeH4FVvuCKyIcBicxZoWNyhTehwwg/exec',
       years: 0,
       views: 0,
       pic:'https://drive.google.com/uc?export=view&id=1carhdDO1t8HQlqGYBC9ad57n2WQamfaa',
