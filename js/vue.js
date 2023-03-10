@@ -4,6 +4,7 @@ const app = Vue.createApp({
       webProjects: 0,
       years: 0,
       views: 0,
+      pic:'https://drive.google.com/uc?export=view&id=1carhdDO1t8HQlqGYBC9ad57n2WQamfaa',
       animateCounters: true,
       tagline: '',
       tags: ['Full Stack Web Developer', 'Vuegle Stack Developer', 'Freelance Web Developer'],
@@ -240,8 +241,22 @@ app.component('navbar-section', {
         </a>
         <nav class="gap-3 align-items-center justify-content-center text-secondary">
             <a href="./">Home</a>
-            <a href="./#experience">Experience</a>
-            <a href="">Collaborations</a>
+            <a href="" data-bs-toggle="dropdown">Experience</a>
+              <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#">Progressive Web Applications</a></li>
+              <li><a class="dropdown-item" href="#">CSR Websites</a></li>
+              <li><a class="dropdown-item" href="#">Chrome Extensions</a></li>
+              <li><a class="dropdown-item" href="#">CRM Softwares</a></li>
+              <li><a class="dropdown-item" href="#">Automations</a></li>
+              <li><a class="dropdown-item" href="#">SEO & SSR Web Apps</a></li>
+              </ul>
+            <a href="" data-bs-toggle="dropdown">Collaborations</a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#">Google Developer Groups</a></li>
+                <li><a class="dropdown-item" href="#">Mena Digital Days</a></li>
+                <li><a class="dropdown-item" href="#">Devfest</a></li>
+                <li><a class="dropdown-item" href="#">Jurdi Law</a></li>
+              </ul>
             <a :href="env('/blogs/')">Blogs</a>
         </nav>
         <i class="bi bi-three-dots-vertical menu text-secondary fs-4" data-bs-toggle="dropdown"></i>
@@ -264,7 +279,7 @@ app.component('navbar-section', {
             </li>
             </div>
         </ul>
-        <div class="meeting-btn">
+        <div class="meeting-btnn">
             <a href="" class="btn btn-primary text-light d-flex align-items-center gap-2">
             <i class="material-symbols-outlined">
                 video_call
@@ -309,19 +324,19 @@ app.component('hero-section', {
                 <h1 class="display-5 bebas text-gradient "># {{tagline}}<strong class="pop blink text-gradient">_</strong>
                 </h1>
   
-                <h1 class="fs-4 pop text-primary">Building Innovative Web Solutions with Expertise in Google
+                <h1 class="fs-5 pop text-primary">Building Innovative Web Solutions with Expertise in Google
                   Apps Script & VueJs</h1>
-                <p class="text-secondary pop text-justify">
+                <p class="text-secondary pop text-justify fs-medium">
                   Lorem3 ipsum dolor sit amet consectetur adipisicing elit. Dicta, sunt! Incidunt illo aliquid explicabo
                   reprehenderit quae quis ea repellendus sapiente laudantium expedita perspiciatis, aut quibusdam. Amet
                   accusamus sint sunt facere?
                 </p>
-                <p class="text-secondary pop text-justify">
+                <p class="text-secondary pop text-justify fs-medium">
                   Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta, sunt! Incidunt illo aliquid explicabo
                   reprehenderit quae quis ea repellendus sapiente laudantium expedita perspiciatis, aut quibusdam. Amet
                   accusamus sint sunt facere?
                 </p>
-                <p class="text-secondary pop text-justify">
+                <p class="text-secondary pop text-justify fs-medium">
                   Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta, sunt! Incidunt illo aliquid explicabo
                   reprehenderit quae quis ea repellendus sapiente laudantium expedita perspiciatis, aut quibusdam. Amet
                   accusamus sint sunt facere?
@@ -329,8 +344,8 @@ app.component('hero-section', {
               </div>
               <!-- Counters -->
               <div class="">
-                <h2 class="pop text-justify fs-4 text-primary">Lorem ipsum dolor sit amet.</h2>
-                <p class="text-secondary pop text-justify fs-6">
+                <h2 class="pop text-justify fs-5 text-primary">Lorem ipsum dolor sit amet.</h2>
+                <p class="text-secondary pop text-justify fs-small">
                   Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quae aliquid odio enim dicta illum quis!
                 </p>
               </div>
@@ -368,17 +383,16 @@ app.component('hero-section', {
               <div class="swiper-pagination position-static mt-2"></div>
             </div>
   
-            <div class="mt-3 d-flex flex-column justify-content-center gap-2">
-              <div class="d-flex justify-content-between align-items-center">
-                <h2 class="display-6 bebas text"># Collaborations and Events</h2>
+            <div class="mt-3 d-flex flex-column justify-content-center gap-3">
+              <div class="d-flex flex-column">
+                <h2 class="fs-1 bebas text-gradient">Collaborations and Events</h2>
+                <p class="pop text-justify text-secondary fs-small">Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  Odit mollitia nisi possimus, ipsam sequi, fuga
+                  praesentium eos necessitatibus quod optio dolorem molestiae provident dignissimos recusandae dolores
+                  consequatur? Iusto, enim nam?
+                </p>
               </div>
   
-              <h3 class="fs-5 pop text-primary"> Lorem ipsum dolor sit amet. </h3>
-              <p class="pop fs-6 text-justify text-secondary">Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Odit mollitia nisi possimus, ipsam sequi, fuga
-                praesentium eos necessitatibus quod optio dolorem molestiae provident dignissimos recusandae dolores
-                consequatur? Iusto, enim nam?
-              </p>
               <div class="d-flex flex-wrap justify-content-start align-items-center gap-2">
                 <a href="https://www.youtube.com/live/HNtGQNbOfeE?feature=share"
                   class="bg-dark rounded-pill py-1 px-3 d-flex justify-content-between align-items-center gap-1">

@@ -5,7 +5,7 @@
     --light-text: #ced4da;
     /* --gradient-background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%); */
     --gradient-background: linear-gradient(to top, #e6e9f0 0%, #eef1f5 100%);
-    --gradient-text: linear-gradient(180deg, #2af598 0%, #009efd 100%);
+    --gradient-text: linear-gradient(170deg, #2af598 0%, #009efd 70%);
     --gradient-abyad: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
 
 }
@@ -17,7 +17,7 @@
 }
 
 a {
-    transition: .3s;
+    transition: .1s;
     color: inherit;
     text-decoration: none !important;
 }
@@ -66,11 +66,16 @@ a {
 .fs-small {
     font-size: smaller !important;
 }
-.fs-xsmall{
+
+.fs-xsmall {
     font-size: xx-small !important;
 }
 
-.ls-1{
+.fs-medium {
+    font-size: 14.5px;
+}
+
+.ls-1 {
     letter-spacing: 1px;
 }
 
@@ -109,6 +114,10 @@ a {
 header {
     transition: .4s ease-in-out;
     z-index: 999999999;
+}
+
+.z-100 {
+    z-index: 100;
 }
 
 header>nav {
