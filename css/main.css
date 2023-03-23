@@ -3,6 +3,7 @@
 :root {
     --text: #1d3557;
     --light-text: #ced4da;
+    --aswad: #293241;
     /* --gradient-background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%); */
     --gradient-background: linear-gradient(to top, #e6e9f0 0%, #eef1f5 100%);
     --gradient-text: linear-gradient(170deg, #2af598 0%, #009efd 70%);
@@ -38,6 +39,14 @@ a {
 
 .bg-extra-abyad {
     background: var(--gradient-abyad);
+}
+
+.bg-aswad {
+    background-color: var(--aswad);
+}
+
+.bg-hover-aswad:hover {
+    background-color: var(--aswad);
 }
 
 .pop {
@@ -92,6 +101,20 @@ a {
     overflow-x: hidden;
 }
 
+.overflow-y {
+    overflow-y: auto;
+}
+.line{
+    height: .8rem !important;
+}
+
+
+iframe {
+    width: 100% !important;
+    border-radius: .5rem;
+    -webkit-animation: skeleton 0.5s linear infinite alternate both;
+    animation: skeleton 0.5s linear infinite alternate both;
+}
 
 .bg-glass {
     /* From https://css.glass */
@@ -155,6 +178,19 @@ header>nav {
 
 .line-md {
     display: none;
+}
+
+.h-500px {
+    height: 500px;
+    overflow-y: scroll;
+}
+
+.mono {
+    font-family: monospace;
+}
+
+aside {
+    height: 100vh;
 }
 
 

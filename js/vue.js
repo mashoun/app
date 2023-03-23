@@ -1,11 +1,13 @@
 const app = Vue.createApp({
   data() {
     return {
+      // embed: `<iframe width="560" height="315" src="https://www.youtube.com/embed/c5wAfnzlA8o" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>`,
+      article: `<h1>my blog subtitile</h1>`,
       webProjects: 0,
-      API:'https://script.google.com/macros/s/AKfycbycBjIHVwuNXFFJQTfyD1NxryPaK8xcg5-fScxLCEeH4FVvuCKyIcBicxZoWNyhTehwwg/exec',
+      API: 'https://script.google.com/macros/s/AKfycbxaxMOBpU7Mrb3cVKHmgEW93leo9FXL3-joeHePiYiR6gNdzsocYrJ9GE9QsEjRDii0wA/exec',
       years: 0,
       views: 0,
-      pic:'https://drive.google.com/uc?export=view&id=1carhdDO1t8HQlqGYBC9ad57n2WQamfaa',
+      pic: 'https://drive.google.com/uc?export=view&id=1carhdDO1t8HQlqGYBC9ad57n2WQamfaa',
       animateCounters: true,
       tagline: '',
       tags: ['Full Stack Web Developer', 'Vuegle Stack Developer', 'Freelance Web Developer'],
@@ -128,7 +130,7 @@ const app = Vue.createApp({
     },
 
     env(path) {
-      if (location.href.includes('http://127.0.0.1:5500/')) {
+      if (location.href.includes('http://127.0.0.1:5501/')) {
         // this is in dev mode
         return path;
       } else {
@@ -280,7 +282,7 @@ app.component('navbar-section', {
             </li>
             </div>
         </ul>
-        <div class="meeting-btnn">
+        <div class="meeting-btn">
             <a href="" class="btn btn-primary text-light d-flex align-items-center gap-2">
             <i class="material-symbols-outlined">
                 video_call
@@ -293,7 +295,7 @@ app.component('navbar-section', {
   methods: {
 
     env(path) {
-      if (location.href.includes('http://127.0.0.1:5500/')) {
+      if (location.href.includes('http://127.0.0.1:5501/')) {
         // this is in dev mode
         return path;
       } else {
@@ -639,7 +641,7 @@ app.component('experience-section', {
   methods: {
 
     env(path) {
-      if (location.href.includes('http://127.0.0.1:5500/')) {
+      if (location.href.includes('http://127.0.0.1:5501/')) {
         // this is in dev mode
         return path;
       } else {
@@ -652,7 +654,6 @@ app.component('experience-section', {
     },
   }
 })
-// ********** EXPERIENCE SECTION COMPONENT **********
 
 
 
@@ -719,7 +720,7 @@ app.component('blogs-section', {
     },
 
     env(path) {
-      if (location.href.includes('http://127.0.0.1:5500/')) {
+      if (location.href.includes('http://127.0.0.1:5501/')) {
         // this is in dev mode
         return path;
       } else {
@@ -735,7 +736,6 @@ app.component('blogs-section', {
     this.allBlogsLink();
   }
 })
-// ********** BLOGS SECTION COMPONENT **********
 
 
 
@@ -894,19 +894,277 @@ app.component('footer-section', {
       <section class="container mb-3">
         <div class="row justify-content-between gap-3">
           <h6 class="col-12 col-lg-7 col-xl-8 fs-4 pop text-abyad text-center text-lg-start m-0 ls-1"> <strong>Mahmoud Mashoun</strong> </h6>
-          <div class="col-12 col-lg-3 d-flex align-items-center justify-content-center gap-3">
+          <div class="col-12 col-lg-2 d-flex align-items-center justify-content-center justify-content-lg-between gap-3">
             <a href=""><i class="social-media-icon fs-4 bi bi-linkedin text-secondary"></i></a>
             <a href=""><i class="social-media-icon fs-4 bi bi-whatsapp text-secondary"></i></a>
             <a href=""><i class="social-media-icon fs-4 bi bi-github text-secondary"></i></a>
             <a href=""><i class="social-media-icon fs-4 bi bi-youtube text-secondary"></i></a>
             <a href=""><i class="social-media-icon fs-4 bi bi-stack-overflow text-secondary"></i></a>
-            <a href=""><i class="social-media-icon fs-4 bi bi-chat-square-dots text-secondary"></i></a>
           </div>
         </div>
       </section>
     </footer>
     `
 })
-// ********** CONTACT SECTION COMPONENT **********
+
+// ********* BLOG ARTICLE SECTION ***********
+app.component('blog', {
+  template:
+    /*html */
+    `
+    <article class="col-12 col-lg-6 px-2 py-3">
+        <div class="rounded shadow p-3 bg-light">
+            <!-- blog header -->
+            <div class="bg-light d-flex align-items-center justify-content-between px-2 py-3 shadow-sm rounded">
+                <a :href="env('/')" class="d-flex justify-content-start align-items-center gap-2">
+                    <img src="https://drive.google.com/uc?export=view&id=1carhdDO1t8HQlqGYBC9ad57n2WQamfaa"
+                        alt="profile pic" class="img-fluid rounded-pill shadow skeleton" width="40" height="40">
+                    <div class="d-flex flex-column">
+                        <h1 class="fs-5 text-secondary m-0 pop"> <strong>Mahmoud Mashoun</strong> </h1>
+                        <h6 class="fs-xsmall pop text-secondary">Full Stack Web Dev.</h6>
+                    </div>
+                </a>
+                <div class="d-flex align-items-center gap-2">
+                    <i class="bi bi-three-dots-vertical fs-5 text-secondary" data-bs-toggle="dropdown"></i>
+
+                    <ul class="dropdown-menu shadow-sm p-2 pop bg-abyad">
+                        <div class="scale-in-center">
+                            <li><a class="dropdown-item" :href="env('/')">Home Page</a></li>
+                            <li><a class="dropdown-item" href="#experience">Work Experience</a></li>
+                            <li><a class="dropdown-item" href="/blogs">Blogs & FAQs</a></li>
+                            <li><a class="dropdown-item" href="/terms_and_conditions">Terms & Conditions</a>
+                            </li>
+                            <li><a class="dropdown-item" href="/privacy_policy">Privacy Policy</a></li>
+                            <li><a class="dropdown-item" href="#contact">Contact</a></li>
+                            <li>
+                                <a href="" class="mt-1 rounded border p-2 text d-flex align-items-center gap-2">
+                                    <i class="material-symbols-outlined">
+                                        video_call
+                                    </i>
+                                    <span>Schedule a meeting</span>
+                                </a>
+                            </li>
+                        </div>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- blog image slider -->
+            <figure v-if="media" class="swiper mt-3">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide" v-for="i in imgs">
+                        <div class="swiper-zoom-container skeleton rounded">
+                            <img :src="i" alt="pic" class="img-fluid rounded skeleton" width="1920"
+                                height="1080">
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-pagination position-static mt-2"></div>
+            </figure>
+            <figure v-else class="mt-3">
+                <slot name="embed"><slot>
+            </figure>
+
+            <!-- blog body [ title + paragraph ] -->
+            <div class="mt-3 d-flex flex-column gap-3">
+                <slot name="title"></slot>
+                <slot name="article"></slot>
+            </div>
+            <hr>
+
+            <!-- blog footer [ date + share btn ] -->
+            <div class="d-flex gap-2 align-items-center justify-content-between">
+                <div class="text d-flex gap-2 align-items-center text-secondary">
+                    <i class="bi bi-clock"></i>
+                    <small class="m-0">Fri 12 March 2023</small>
+                </div>
+                <div class="d-flex align-items-center gap-3">
+                    <i class="bi bi-chat-square-dots fs-5 text-secondary"></i>
+                    <i class="bi bi-share-fill fs-6 text-secondary"></i>
+                </div>
+            </div>
+
+        </div>
+    </article>
+    `,
+  mounted() {
+    // this.parseHTML('embed-box',this.embed)
+  },
+  props: ['media', 'imgs'],
+  methods: {
+    parseHTML(id, content) {
+      document.getElementById(id).innerHTML = content
+    },
+
+    env(path) {
+      if (location.href.includes('http://127.0.0.1:5501/')) {
+        // this is in dev mode
+        return path;
+      } else {
+        if (location.href.includes('mashoun.github.io/')) {
+          // in production mode
+          // add /app/ directory to all links
+          return '/app/' + path
+        }
+      }
+    },
+  }
+
+})
+
+
+// ********* COMMENTS SECTION ****************
+app.component('comments', {
+  template:
+    /*html */
+    `
+  <section class="col-12 col-lg-4 px-2 py-3">
+      <div class="bg-light p-3 shadow-sm rounded d-flex flex-column gap-3">
+          <div class="d-flex flex-column">
+
+              <h3 class="fs-2 bebas text-secondary text-start">Comments Tagline</h3>
+              <p class="pop text-secondary fs-small"> Quo doloribus, dolorum magnam libero magni? </p>
+          </div>
+
+          <!-- comment box -->
+          
+          <div v-if="spinner" class="d-flex flex-column gap-2">
+            <div class="d-flex gap-1 align-items-center">
+                <div class="w-75 line rounded-pill skeleton"></div>
+                <div class="w-25 line rounded-pill skeleton"></div>
+            </div>
+            <div class="w-100 line rounded-pill skeleton"></div>
+            <div class="d-flex gap-1 align-items-center">
+                <div class="w-25 line rounded-pill skeleton"></div>
+                <div class="w-75 line rounded-pill skeleton"></div>
+            </div>
+            <div class="w-100 line rounded-pill skeleton"></div>
+            <div class="w-75 line rounded-pill skeleton"></div>
+            <div class="w-25 line rounded-pill skeleton mt-3"></div>
+          </div>
+          <div v-else class="pop accordion accordion-flush rounded shadow-sm" id="comment-box">
+              <div class="accordion-item" v-for="c in comments">
+                  <div class="point p-3 bg-extra-abyad d-flex justify-content-between"
+                      data-bs-toggle="collapse" :data-bs-target="'#'+c.id">
+                      <div class="d-flex flex-column">
+                          <h6 class="text-primary fs-6 pop"><i class="bi bi-person-circle"></i> {{c.username}}
+                          </h6>
+                      </div>
+                      <i class="bi bi-chevron-expand"></i>
+                  </div>
+                  <div :id="c.id" :class="'accordion-collapse collapse'+ show(c.show)"
+                      data-bs-parent="#comment-box">
+                      <div class="accordion-body">
+                          <p class="text-secondary fs-small">
+                              <span :title="'@'+c.username">{{c.theComment}}</span><br>
+                              <span class="text-success d-flex align-items-start gap-2"
+                                  title="@Mahmoud Mashoun">
+                                  <i class="bi bi-arrow-return-right"></i>
+                                  <span> <strong>Mahmoud Mashoun<i class="bi bi-dot"></i></strong> {{c.reply}} </span>
+                              </span>
+                          </p>
+                          <small class="fs-xsmall text-secondary"><i class="bi bi-clock"></i> {{timo(c.date)}}
+                          </small>
+                      </div>
+                  </div>
+              </div>
+          </div>
+          <div class="pop">
+              <!-- Add a comment -->
+              <grammarly-editor-plugin>
+                <textarea class="form-control bg-light" placeholder="Add comment"></textarea>
+              <grammarly-editor-plugin>
+              <!-- submit ur comment -->
+              <div class="input-group mt-2">
+                  <input type="email" class="form-control py-2 bg-light" placeholder="Enter your email"
+                      aria-label="Recipient's username" aria-describedby="button-addon2">
+                  <button class="btn btn-primary px-3" type="button"><span class="pop">Submit</span></button>
+              </div>
+          </div>
+      </div>
+  </section>
+  `,
+  data() {
+    return {
+      comments: '',
+      spinner: false
+    }
+  },
+  props: ['api', 'index'],
+  mounted() {
+    this.spinner = true;
+    var api = this.api
+    api += `?getComment=1&blogIndex=${this.index}`
+    fetch(api).then(res => res.json()).then(res => {
+      this.comments = res
+      console.log(res)
+      this.spinner = false
+    })
+  },
+  methods: {
+
+    show(x) {
+      // showing the first commnent as default
+      if (x) return ' show '
+      else return ''
+    },
+    
+    timo(next) {
+      // Thu Mar 02 2023 14:24:38 GMT+0200 (Eastern European Standard Time)
+      // year-month-day
+
+      var result = '';
+      const currentDate = new Date()
+      const nextDate = new Date(next)
+      // console.log(currentDate, nextDate)
+      // console.log(currentDate.getDate(), nextDate.getDate())
+      // console.log((currentDate.getDate()) - (nextDate.getDate()))
+
+      // // Calculating Years
+      var years = (currentDate.getFullYear()) - (nextDate.getFullYear())
+      console.log('years = ' + years)
+      if (years == 1) {
+        return `${years} year ago`
+      } else {
+        if (years >= 2) {
+          return `${years} years ago`
+        }
+      }
+
+      // Calculating Month
+      var months = (currentDate.getMonth() + 1) - (nextDate.getMonth() + 1)
+      if (months == 1) {
+        result += `${months} month ago`
+        return result;
+      } else {
+        if (months >= 2) {
+          result += `${months} months ago`
+          return result;
+        }
+      }
+
+      // Calculating Days
+      var days = (currentDate.getDate()) - (nextDate.getDate());
+      if (days == 0) {
+        result += 'Today'
+      } else {
+        if (days == 1) {
+          result += 'Yesterday'
+
+        } else {
+          if (days >= 2) {
+            result += `${days} days ago`
+          }
+        }
+      }
+
+
+      return result;
+
+
+    },
+  }
+})
+
 
 app.mount('#app')
