@@ -1019,7 +1019,6 @@ app.component('comments', {
     /*html */
     `
   
-  <script src="https://unpkg.com/@grammarly/editor-sdk?clientId=client_8HqGf8c32GzkCc52Lw3Ayo"></script>
   <section class="col-12 col-lg-4 px-2 py-3">
       <div class="bg-light p-3 shadow-sm rounded d-flex flex-column gap-3">
           <div class="d-flex flex-column">
