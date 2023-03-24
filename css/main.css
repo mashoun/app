@@ -104,8 +104,21 @@ a {
 .overflow-y {
     overflow-y: auto;
 }
-.line{
-    height: .8rem !important;
+
+.cap::first-letter {
+    text-transform: capitalize !important;
+}
+
+.line {
+    height: .5rem !important;
+}
+
+.text-fade {
+    display: -webkit-box;
+    overflow: hidden;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+    position: relative;
 }
 
 

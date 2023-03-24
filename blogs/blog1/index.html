@@ -5,8 +5,36 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>blog 1</title>
-    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+
+    <!-- Primary Meta Tags -->
+    <title>##blog_page_title</title>
+    <meta name="title" content="##blog_page_title">
+    <meta name="description" content="##blog_page_description">
+    <meta name="keywords" content="##blog_page_keywords">
+    <meta name="robots" content="index, follow">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="language" content="English">
+    <meta name="revisit-after" content="1 days">
+    <meta name="author" content="Mahmoud Mashoun">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="##blog_page_url">
+    <meta property="og:title" content="##blog_page_title">
+    <meta property="og:description" content="##blog_page_description">
+    <meta property="og:image" content="##blog_social_media_image">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="##blog_page_url">
+    <meta property="twitter:title" content="##blog_page_title">
+    <meta property="twitter:description" content="##blog_page_description">
+    <meta property="twitter:image" content="##blog_social_media_image">
+
+
+    <!-- Styles -->
+    <link rel="shortcut icon" href="https://drive.google.com/uc?export=view&id=1carhdDO1t8HQlqGYBC9ad57n2WQamfaa"
+        type="image/x-icon">
     <link rel="stylesheet" href="../../css/main.css">
     <link rel="stylesheet" href="../../css/responsive.css">
     <link rel="stylesheet" href="../../css/animations.css">
@@ -22,7 +50,7 @@
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <!-- VUE JS -->
     <script src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>
-    
+
 </head>
 
 <body id="app" class="bg-body">
@@ -32,39 +60,91 @@
         <div class="container d-flex align-items-center gap-1">
             <a :href="env('/blogs/')"><i class="bi bi-grid-fill"></i></a>
             <i class="bi bi-chevron-compact-right"></i>
-            <h6 class="m-0 text-secondary fs-6">Lorem ipsum dolor sit amet...</h6>
+            <h6 class="m-0 text-secondary fs-6 text-fade">Mastering Google Apps Script: Tips and Tricks for Productivity
+                Power Users / part 2
+            </h6>
         </div>
     </header>
     <main class="container mt-1 mb-5">
         <div class="row justify-content-center">
-            <!-- A Blog -->
-            <blog :media="true" :imgs="imgs">
-                <template #embed>
-                    <iframe width="560" height="315" src="https://www.youtube.com/embed/V03WB_0pwAc"
-                        title="YouTube video player" frameborder="0"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                        allowfullscreen></iframe>
-                </template>
-                <template #title>
-                    <h1 class="fs-1 bebas text-gradient"> Mastering Google Apps Script: Tips and Tricks for Productivity
-                        Power Users / part 2</h1>
-                </template>
-                <template #article>
-                    <p class="fs-6 pop text-secondary text-justify">Lorem, ipsum dolor sit amet consectetur adipisicing
-                        elit. Cupiditate, eveniet!</p>
-                </template>
-            </blog>
+            <article class="col-12 col-lg-6 px-2 py-3">
+                <div class="rounded shadow p-3 bg-light">
+                    <!-- blog header -->
+                    <section
+                        class="bg-light d-flex align-items-center justify-content-between px-2 py-3 shadow-sm rounded">
+                        <a :href="env('/')" class="d-flex justify-content-start align-items-center gap-2">
+                            <img src="https://drive.google.com/uc?export=view&id=1carhdDO1t8HQlqGYBC9ad57n2WQamfaa"
+                                alt="profile pic" class="img-fluid rounded-pill shadow skeleton" width="40" height="40">
+                            <div class="d-flex flex-column">
+                                <h1 class="fs-5 text-secondary m-0 pop"> <strong>Mahmoud Mashoun</strong> </h1>
+                                <h6 class="fs-xsmall pop text-secondary">Full Stack Web Dev.</h6>
+                            </div>
+                        </a>
+                        <div class="d-flex align-items-center gap-2">
+                            <i class="bi bi-three-dots-vertical fs-5 text-secondary" data-bs-toggle="dropdown"></i>
+
+                            <ul class="dropdown-menu shadow-sm p-2 pop bg-abyad">
+                                <div class="scale-in-center">
+                                    <li><a class="dropdown-item" :href="env('/')">Home Page</a></li>
+                                    <li><a class="dropdown-item" href="#experience">Work Experience</a></li>
+                                    <li><a class="dropdown-item" href="/blogs">Blogs & FAQs</a></li>
+                                    <li><a class="dropdown-item" href="/terms_and_conditions">Terms & Conditions</a>
+                                    </li>
+                                    <li><a class="dropdown-item" href="/privacy_policy">Privacy Policy</a></li>
+                                    <li><a class="dropdown-item" href="#contact">Contact</a></li>
+                                    <li>
+                                        <a href="" class="mt-1 rounded border p-2 text d-flex align-items-center gap-2">
+                                            <i class="material-symbols-outlined">
+                                                video_call
+                                            </i>
+                                            <span>Schedule a meeting</span>
+                                        </a>
+                                    </li>
+                                </div>
+                            </ul>
+                        </div>
+                    </section>
+
+                    <!-- blog media  -->
+                    <section class="mt-3">
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/V03WB_0pwAc"
+                            title="YouTube video player" frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            allowfullscreen></iframe>
+                    </section>
+
+
+                    <!-- blog body [ title + paragraph ] -->
+                    <section class="mt-3 d-flex flex-column gap-3">
+                        <h1 class="fs-1 bebas text-gradient">##blog_page_title</h1>
+                        <p class="fs-6 pop text-secondary text-justify cap">##blog_article</p>
+                    </section>
+                    <hr>
+
+                    <!-- blog footer [ date + share btn ] -->
+                    <footer class="d-flex gap-2 align-items-center justify-content-between">
+                        <div class="text d-flex gap-2 align-items-center text-secondary fs-small">
+                            <i class="bi bi-clock"></i>
+                            <time class="m-0 pop"> {{timo('Fri 12 March 2023')}} </time>
+                        </div>
+                        <div class="d-flex align-items-center gap-3">
+                            <i class="bi bi-share-fill fs-6 text-secondary"></i>
+                        </div>
+                    </footer>
+
+                </div>
+            </article>
 
             <!-- Comment Section -->
-            <comments :api="API" index="2" ></comments>
+            <comments :api="API" index="2"></comments>
 
         </div>
     </main>
 
-
     <footer-section id="contact"></footer-section>
 
     <!-- ********** JAVASCRIPT ********** -->
+
     <script src="../../js/vue.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"

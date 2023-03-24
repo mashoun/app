@@ -1043,37 +1043,28 @@ app.component('comments', {
             <div class="w-75 line rounded-pill skeleton"></div>
             <div class="w-25 line rounded-pill skeleton mt-3"></div>
           </div>
-          <div v-else class="pop accordion accordion-flush rounded shadow-sm" id="comment-box">
-              <div class="accordion-item" v-for="c in comments">
-                  <div class="point p-3 bg-extra-abyad d-flex justify-content-between"
-                      data-bs-toggle="collapse" :data-bs-target="'#'+c.id">
-                      <div class="d-flex flex-column">
-                          <h6 class="text-primary fs-6 pop"><i class="bi bi-person-circle"></i> {{c.username}}
-                          </h6>
-                      </div>
-                      <i class="bi bi-chevron-expand"></i>
-                  </div>
-                  <div :id="c.id" :class="'accordion-collapse collapse'+ show(c.show)"
-                      data-bs-parent="#comment-box">
-                      <div class="accordion-body">
-                          <p class="text-secondary fs-small">
-                              <span :title="'@'+c.username">{{c.theComment}}</span><br>
-                              <span class="text-success d-flex align-items-start gap-2"
-                                  title="@Mahmoud Mashoun">
-                                  <i class="bi bi-arrow-return-right"></i>
-                                  <span> <strong>Mahmoud Mashoun<i class="bi bi-dot"></i></strong> {{c.reply}} </span>
-                              </span>
-                          </p>
-                          <small class="fs-xsmall text-secondary"><i class="bi bi-clock"></i> {{timo(c.date)}}
-                          </small>
-                      </div>
-                  </div>
-              </div>
-          </div>
+          <section v-else class="d-flex flex-column gap-2">
+            <div class="d-flex flex-column p-2 shadow-sm rounded" v-for="c in comments">
+                <div class="d-flex align-items-center">
+                    <i class="bi bi-at text-secondary fs-5"></i>
+                    <strong class="text-primary pop opacity-75">{{c.username}}</strong>
+                </div>
+                <p class="text-secondary pop fs-small">
+                    <small class="cap">{{c.theComment}}</small>
+                    <i class="bi bi-dot"></i>
+                    <time class="fs-small mono">{{timo(c.date)}}</time><br>
+                    <span class="text-success opacity-75 d-flex align-items-start gap-2"
+                        title="@Mahmoud Mashoun">
+                        <i class="bi bi-arrow-return-right"></i>
+                        <small> <strong>Mahmoud Mashoun<i class="bi bi-dot"></i></strong>{{c.reply}}</small>
+                    </span>
+                </p>
+            </div>
+          </section>
           <div class="pop">
               <!-- Add a comment -->
               <grammarly-editor-plugin>
-                <textarea class="form-control bg-light" placeholder="Add comment"></textarea>
+                <textarea class="form-control bg-light" rows="4" placeholder="Add comment"></textarea>
               <grammarly-editor-plugin>
               <!-- submit ur comment -->
               <div class="input-group mt-2">
