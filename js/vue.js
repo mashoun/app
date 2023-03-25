@@ -68,6 +68,19 @@ const app = Vue.createApp({
     }
   },
   methods: {
+    
+    shareBlog(title, url) {
+      if (navigator.share) {
+        navigator.share({
+          title: title,
+          url: url
+        })
+        .then(() => console.log('Shared successfully'))
+        .catch((error) => console.error('Error sharing:', error));
+      } else {
+        console.log('Web Share API not supported');
+      }
+    },
 
     show(x) {
       // showing the first commnent as default
@@ -1099,6 +1112,7 @@ app.component('comments', {
     })
   },
   methods: {
+    
     validateComment() {
       const textarea = document.getElementById('theComment');
       const length = this.theComment;
