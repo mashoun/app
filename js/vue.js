@@ -68,15 +68,15 @@ const app = Vue.createApp({
     }
   },
   methods: {
-    
+
     shareBlog(title, url) {
       if (navigator.share) {
         navigator.share({
           title: title,
           url: url
         })
-        .then(() => console.log('Shared successfully'))
-        .catch((error) => console.error('Error sharing:', error));
+          .then(() => console.log('Shared successfully'))
+          .catch((error) => console.error('Error sharing:', error));
       } else {
         console.log('Web Share API not supported');
       }
@@ -1112,21 +1112,21 @@ app.component('comments', {
     })
   },
   methods: {
-    
+
     validateComment() {
       const textarea = document.getElementById('theComment');
       const length = this.theComment;
       console.log(this.max < this.theComment.length)
-      if(this.max < this.theComment.length) textarea.classList.add('is-invalid')
+      if (this.max < this.theComment.length) textarea.classList.add('is-invalid')
       else textarea.classList.remove('is-invalid')
     },
-    validateEmail(){
-      
+    validateEmail() {
+
       const email = document.getElementById('email');
       const length = this.useremail;
       const regex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 
-      if(50 < this.useremail.length || (! regex.test(this.useremail)) ) email.classList.add('is-invalid')
+      if (50 < this.useremail.length || (!regex.test(this.useremail))) email.classList.add('is-invalid')
       else email.classList.remove('is-invalid')
     },
 
@@ -1241,5 +1241,24 @@ app.component('comments', {
   }
 })
 
+// *********** SWIPER COMPONENT ***********
+app.component('swiper', {
+  template:
+    /*html */
+    `
+  <figure class="swiper mt-3">
+    <div class="swiper-wrapper">
+        <div class="swiper-slide" v-for="i in imgs">
+            <div class="swiper-zoom-container skeleton rounded">
+                <img :src="i" alt="pic" class="img-fluid rounded skeleton object-fit-cover" width="1920" height="1080">
+            </div>
+        </div>
+    </div>
+    <div class="swiper-pagination position-static mt-2"></div>
+  </figure>
+  
+  `,
+  props: ['imgs'],
+})
 
 app.mount('#app')
