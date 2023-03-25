@@ -1062,21 +1062,25 @@ app.component('comments', {
           </section>
           <div class="pop">
               <!-- Add a comment -->
+              <small class="fs-xsmall float-end mb-1 text-secondary pop">{{max - theComment.length}}</small>
               <grammarly-editor-plugin>
-                <textarea v-model="theComment" class="form-control bg-light" rows="4" placeholder="Add comment"></textarea>
+                <textarea v-model="theComment" @keyup="validateComment" id="theComment" class="form-control bg-light" rows="4" placeholder="Add comment"></textarea>
+                <small class="invalid-feedback fs-xsmall pop mt-1">Max {{max}} char !</small>
               <grammarly-editor-plugin>
               <!-- submit ur comment -->
               <div class="input-group mt-2">
-                  <input type="email" v-model="useremail" class="form-control py-2 bg-light" placeholder="Enter your email"
+                  <input @keyup="validateEmail" type="email" id="email" v-model="useremail" class="form-control py-2 bg-light" placeholder="Enter your email"
                       aria-label="Recipient's username" aria-describedby="button-addon2">
                   <button @click="shareOnLinkedIn" class="btn btn-primary px-3" type="button"><span class="pop">Submit</span></button>
               </div>
+              
           </div>
       </div>
   </section>
   `,
   data() {
     return {
+      max: 250,
       comments: '',
       theComment: '',
       useremail: '',
@@ -1095,6 +1099,23 @@ app.component('comments', {
     })
   },
   methods: {
+    validateComment() {
+      const textarea = document.getElementById('theComment');
+      const length = this.theComment;
+      console.log(this.max < this.theComment.length)
+      if(this.max < this.theComment.length) textarea.classList.add('is-invalid')
+      else textarea.classList.remove('is-invalid')
+    },
+    validateEmail(){
+      
+      const email = document.getElementById('email');
+      const length = this.useremail;
+      const regex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+
+      if(50 < this.useremail.length || (! regex.test(this.useremail)) ) email.classList.add('is-invalid')
+      else email.classList.remove('is-invalid')
+    },
+
     newComment() {
 
       this.spinner = true;
