@@ -261,3 +261,12 @@ aside {
 .blur {
     filter: blur(5px);
 }
+
+.bg-transparent{
+    background: transparent;
+    border: none;
+}
+
+.w-fit{
+    width: fit-content !important;
+}

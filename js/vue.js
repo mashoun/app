@@ -1019,12 +1019,11 @@ app.component('comments', {
     /*html */
     `
   
-  <section class="col-12 col-lg-4 px-2 py-3">
+  <section class="col-12 col-lg-5 px-2 py-3">
       <div class="bg-light p-3 shadow-sm rounded d-flex flex-column gap-3">
           <div class="d-flex flex-column">
-
-              <h3 class="fs-2 bebas text-secondary text-start">Comments Tagline</h3>
-              <p class="pop text-secondary fs-small"> Quo doloribus, dolorum magnam libero magni? </p>
+              <h3 class="fs-2 bebas text-secondary text-start">Community chat</h3>
+              <p class="pop text-secondary fs-small cap">don't be shy - leave a comment and join the discussion. Please note that I will review and respond to your comment before it is posted.</p>
           </div>
 
           <!-- comment box -->
@@ -1064,13 +1063,13 @@ app.component('comments', {
           <div class="pop">
               <!-- Add a comment -->
               <grammarly-editor-plugin>
-                <textarea class="form-control bg-light" rows="4" placeholder="Add comment"></textarea>
+                <textarea v-model="theComment" class="form-control bg-light" rows="4" placeholder="Add comment"></textarea>
               <grammarly-editor-plugin>
               <!-- submit ur comment -->
               <div class="input-group mt-2">
-                  <input type="email" class="form-control py-2 bg-light" placeholder="Enter your email"
+                  <input type="email" v-model="useremail" class="form-control py-2 bg-light" placeholder="Enter your email"
                       aria-label="Recipient's username" aria-describedby="button-addon2">
-                  <button class="btn btn-primary px-3" type="button"><span class="pop">Submit</span></button>
+                  <button @click="shareOnLinkedIn" class="btn btn-primary px-3" type="button"><span class="pop">Submit</span></button>
               </div>
           </div>
       </div>
@@ -1079,6 +1078,8 @@ app.component('comments', {
   data() {
     return {
       comments: '',
+      theComment: '',
+      useremail: '',
       spinner: false
     }
   },
@@ -1094,13 +1095,58 @@ app.component('comments', {
     })
   },
   methods: {
+    newComment() {
 
+      this.spinner = true;
+      var api = this.api
+      api += `?newComment=1`
+      var data = {
+        "blogIndex": this.index,
+        "useremail": this.useremail,
+        "theComment": this.theComment
+      }
+      fetch(api, {
+        method: "POST",
+        headers: {
+          "Content-Type": "text/plain",
+        },
+        body: JSON.stringify(data),
+      }).then(res => res.json()).then(res => {
+        alert(res)
+        this.spinner = false
+      })
+    },
     show(x) {
       // showing the first commnent as default
       if (x) return ' show '
       else return ''
     },
-    
+    timeDifference(date1, date2) {
+      const timeDiff = Math.abs(date2.getTime() - date1.getTime());
+      const minute = 60 * 1000;
+      const hour = 60 * minute;
+      const day = 24 * hour;
+
+      if (timeDiff < minute) {
+        return "just now";
+      } else if (timeDiff < hour) {
+        const diff = Math.round(timeDiff / minute);
+        return `${diff} min ago`;
+      } else if (timeDiff < day) {
+        const diff = Math.round(timeDiff / hour);
+        return `${diff} hr ago`;
+      }
+    },
+    shareOnLinkedIn() {
+      const encodedUrl = encodeURIComponent('https://mashoun.github.io/app/blogs/blog1/');
+      const encodedTitle = encodeURIComponent('Testing First Blog with Linkedin API');
+      const encodedSummary = encodeURIComponent('Nevermind about this testing post');
+
+      const shareUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${encodedUrl}&title=${encodedTitle}&summary=${encodedSummary}`;
+      window.open(shareUrl, '_blank');
+    },
+
+
     timo(next) {
       // Thu Mar 02 2023 14:24:38 GMT+0200 (Eastern European Standard Time)
       // year-month-day
@@ -1138,7 +1184,9 @@ app.component('comments', {
       // Calculating Days
       var days = (currentDate.getDate()) - (nextDate.getDate());
       if (days == 0) {
-        result += 'Today'
+        // result += 'Today'
+        result += this.timeDifference(currentDate, nextDate)
+
       } else {
         if (days == 1) {
           result += 'Yesterday'
