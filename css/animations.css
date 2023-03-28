@@ -46,8 +46,8 @@ nav>a:hover {
 
 .meeting-btn:hover {
 
-    -webkit-animation: heartbeat 1.5s ease-in-out 1 both;
-    animation: heartbeat 1.5s ease-in-out 1 both;
+    /* -webkit-animation: heartbeat 1.5s ease-in-out 1 both;
+    animation: heartbeat 1.5s ease-in-out 1 both; */
 }
 
 /* ----------------------------------------------
@@ -190,8 +190,8 @@ nav>a:hover {
 }
 
 .scale-in-center {
-    -webkit-animation: scale-in-center .5s cubic-bezier(.25, .46, .45, .94) both;
-    animation: scale-in-center .5s cubic-bezier(.25, .46, .45, .94) both
+    -webkit-animation: scale-in-center .4s cubic-bezier(.25, .46, .45, .94) both;
+    animation: scale-in-center .4s cubic-bezier(.25, .46, .45, .94) both
 }
 
 /* ----------------------------------------------

@@ -4,7 +4,7 @@ const app = Vue.createApp({
       // embed: `<iframe width="560" height="315" src="https://www.youtube.com/embed/c5wAfnzlA8o" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>`,
       article: `<h1>my blog subtitile</h1>`,
       webProjects: 0,
-      API: 'https://script.google.com/macros/s/AKfycbxaxMOBpU7Mrb3cVKHmgEW93leo9FXL3-joeHePiYiR6gNdzsocYrJ9GE9QsEjRDii0wA/exec',
+      API: 'https://script.google.com/macros/s/AKfycbwQcS1tfzwEjLaifgX-kJnk-zMss60tNepuEzgoxHR6JclP6psGsbYHgEiULrvp983isg/exec',
       years: 0,
       views: 0,
       pic: 'https://drive.google.com/uc?export=view&id=1carhdDO1t8HQlqGYBC9ad57n2WQamfaa',
@@ -100,7 +100,7 @@ const app = Vue.createApp({
 
       // // Calculating Years
       var years = (currentDate.getFullYear()) - (nextDate.getFullYear())
-      console.log('years = ' + years)
+      // console.log('years = ' + years)
       if (years == 1) {
         return `${years} year ago`
       } else {
@@ -409,7 +409,7 @@ app.component('hero-section', {
                 </p>
               </div>
   
-              <div class="d-flex flex-wrap justify-content-start align-items-center gap-2">
+              <div class="d-flex flex-wrap justify-content-start justify-content-lg-between align-items-center gap-2">
                 <a href="https://www.youtube.com/live/HNtGQNbOfeE?feature=share"
                   class="bg-dark rounded-pill py-1 px-3 d-flex justify-content-between align-items-center gap-1">
                   <span class="fs-6 material-symbols-outlined text-warning">
@@ -1036,7 +1036,7 @@ app.component('comments', {
       <div class="bg-light p-3 shadow-sm rounded d-flex flex-column gap-3">
           <div class="d-flex flex-column">
               <h3 class="fs-2 bebas text-secondary text-start">Community chat</h3>
-              <p class="pop text-secondary fs-small cap">don't be shy - leave a comment and join the discussion. Please note that I will review and respond to your comment before it is posted.</p>
+              <p class="pop text-secondary fs-small cap">Please note that I will review and respond to your comment before it is posted.</p>
           </div>
 
           <!-- comment box -->
@@ -1056,7 +1056,7 @@ app.component('comments', {
             <div class="w-25 line rounded-pill skeleton mt-3"></div>
           </div>
           <section v-else class="d-flex flex-column gap-2">
-            <div class="d-flex flex-column p-2 shadow-sm rounded" v-for="c in comments">
+            <div v-if="!nocomments" class="d-flex flex-column p-2 shadow-sm rounded" v-for="c in comments">
                 <div class="d-flex align-items-center">
                     <i class="bi bi-at text-secondary fs-5"></i>
                     <strong class="text-primary pop opacity-75">{{c.username}}</strong>
@@ -1072,6 +1072,16 @@ app.component('comments', {
                     </span>
                 </p>
             </div>
+            <div v-else class="d-flex flex-column p-2 shadow-sm rounded">
+                <div class="d-flex align-items-center">
+                    <i class="bi bi-at text-secondary fs-5"></i>
+                    <strong class="text-primary pop opacity-75">Mahmoud Mashoun</strong>
+                </div>
+                <p class="text-secondary pop fs-small">
+                    <small class="cap">Don't be shy - leave a comment and join the discussion.</small>
+                </p>
+            </div>
+
           </section>
           <div class="pop">
               <!-- Add a comment -->
@@ -1084,7 +1094,7 @@ app.component('comments', {
               <div class="input-group mt-2">
                   <input @keyup="validateEmail" type="email" id="email" v-model="useremail" class="form-control py-2 bg-light" placeholder="Enter your email"
                       aria-label="Recipient's username" aria-describedby="button-addon2">
-                  <button @click="shareOnLinkedIn" class="btn btn-primary px-3" type="button"><span class="pop">Submit</span></button>
+                  <button @click="newComment" class="btn btn-primary px-3" type="button"><span class="pop">Submit</span></button>
               </div>
               
           </div>
@@ -1097,7 +1107,8 @@ app.component('comments', {
       comments: '',
       theComment: '',
       useremail: '',
-      spinner: false
+      spinner: false,
+      nocomments:false
     }
   },
   props: ['api', 'index'],
@@ -1106,9 +1117,14 @@ app.component('comments', {
     var api = this.api
     api += `?getComment=1&blogIndex=${this.index}`
     fetch(api).then(res => res.json()).then(res => {
-      this.comments = res
       console.log(res)
-      this.spinner = false
+      if(res != '203'){
+        this.comments = res
+        this.spinner = false
+      }else{
+        this.spinner = false
+        this.nocomments = true
+      }
     })
   },
   methods: {
@@ -1116,7 +1132,7 @@ app.component('comments', {
     validateComment() {
       const textarea = document.getElementById('theComment');
       const length = this.theComment;
-      console.log(this.max < this.theComment.length)
+      // console.log(this.max < this.theComment.length)
       if (this.max < this.theComment.length) textarea.classList.add('is-invalid')
       else textarea.classList.remove('is-invalid')
     },
@@ -1195,7 +1211,7 @@ app.component('comments', {
 
       // // Calculating Years
       var years = (currentDate.getFullYear()) - (nextDate.getFullYear())
-      console.log('years = ' + years)
+      // console.log('years = ' + years)
       if (years == 1) {
         return `${years} year ago`
       } else {
@@ -1250,7 +1266,7 @@ app.component('swiper', {
     <div class="swiper-wrapper">
         <div class="swiper-slide" v-for="i in imgs">
             <div class="swiper-zoom-container skeleton rounded">
-                <img :src="i" alt="pic" class="img-fluid rounded skeleton object-fit-cover" width="1920" height="1080">
+                <img :src="i.src" :alt="i.alt" class="img-fluid rounded skeleton object-fit-cover" width="1920" height="1080">
             </div>
         </div>
     </div>
