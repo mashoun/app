@@ -1106,17 +1106,17 @@ app.component('comments', {
     },
 
     validateComment() {
-      
+
       const textarea = document.getElementById('theComment');
 
       // Checking if there is an arabic char
       var arabicRegex = /[\u0600-\u06FF]/; // Unicode range for Arabic characters
       if (arabicRegex.test(this.theComment)) {
         textarea.classList.add('arb')
-        textarea.setAttribute('dir','rtl')
-      }else{
+        textarea.setAttribute('dir', 'rtl')
+      } else {
         textarea.classList.remove('arb')
-        textarea.setAttribute('dir','ltr')
+        textarea.setAttribute('dir', 'ltr')
 
       }
       // console.log(this.max < this.theComment.length)
@@ -1184,63 +1184,17 @@ app.component('comments', {
       window.open(shareUrl, '_blank');
     },
 
-
-    timo(next) {
-      // Thu Mar 02 2023 14:24:38 GMT+0200 (Eastern European Standard Time)
-      // year-month-day
-
-      var result = '';
-      const currentDate = new Date()
-      const nextDate = new Date(next)
-      // console.log(currentDate, nextDate)
-      // console.log(currentDate.getDate(), nextDate.getDate())
-      // console.log((currentDate.getDate()) - (nextDate.getDate()))
-
-      // // Calculating Years
-      var years = (currentDate.getFullYear()) - (nextDate.getFullYear())
-      // console.log('years = ' + years)
-      if (years == 1) {
-        return `${years} year ago`
-      } else {
-        if (years >= 2) {
-          return `${years} years ago`
-        }
-      }
-
-      // Calculating Month
-      var months = (currentDate.getMonth() + 1) - (nextDate.getMonth() + 1)
-      if (months == 1) {
-        result += `${months} month ago`
-        return result;
-      } else {
-        if (months >= 2) {
-          result += `${months} months ago`
-          return result;
-        }
-      }
-
-      // Calculating Days
-      var days = (currentDate.getDate()) - (nextDate.getDate());
-      if (days == 0) {
-        // result += 'Today'
-        result += this.timeDifference(currentDate, nextDate)
-
-      } else {
-        if (days == 1) {
-          result += 'Yesterday'
-
-        } else {
-          if (days >= 2) {
-            result += `${days} days ago`
-          }
-        }
-      }
+    timo(date) {
 
 
-      return result;
+      dayjs.extend(window.dayjs_plugin_relativeTime);
+      dayjs();
+      const futureDate = dayjs(date);
+      console.log(futureDate.fromNow());
+      return futureDate.fromNow()
+    }
 
 
-    },
   }
 })
 
