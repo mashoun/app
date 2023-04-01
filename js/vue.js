@@ -10,6 +10,7 @@ const app = Vue.createApp({
       pic: 'https://drive.google.com/uc?export=view&id=1carhdDO1t8HQlqGYBC9ad57n2WQamfaa',
       animateCounters: true,
       tagline: '',
+      lang: 'en',
       tags: ['Full Stack Web Developer', 'Vuegle Stack Developer', 'Freelance Web Developer'],
       counterYears: 200,
       comments: [
@@ -67,7 +68,21 @@ const app = Vue.createApp({
       ],
     }
   },
+  computed: {
+    dir() {
+      if (document.querySelector('html').getAttribute('lang') == 'ar') return 'rtl'
+      return 'ltr'
+    }
+  },
+
   methods: {
+
+
+
+    font(fontname) {
+      if (document.querySelector('html').getAttribute('lang') == 'ar') return 'arb'
+      return fontname
+    },
 
     shareBlog(title, url) {
       if (navigator.share) {
@@ -87,63 +102,18 @@ const app = Vue.createApp({
       if (x) return ' show '
       else return ''
     },
-    timo(next) {
-      // Thu Mar 02 2023 14:24:38 GMT+0200 (Eastern European Standard Time)
-      // year-month-day
-
-      var result = '';
-      const currentDate = new Date()
-      const nextDate = new Date(next)
-      // console.log(currentDate, nextDate)
-      // console.log(currentDate.getDate(), nextDate.getDate())
-      // console.log((currentDate.getDate()) - (nextDate.getDate()))
-
-      // // Calculating Years
-      var years = (currentDate.getFullYear()) - (nextDate.getFullYear())
-      // console.log('years = ' + years)
-      if (years == 1) {
-        return `${years} year ago`
-      } else {
-        if (years >= 2) {
-          return `${years} years ago`
-        }
-      }
-
-      // Calculating Month
-      var months = (currentDate.getMonth() + 1) - (nextDate.getMonth() + 1)
-      if (months == 1) {
-        result += `${months} month ago`
-        return result;
-      } else {
-        if (months >= 2) {
-          result += `${months} months ago`
-          return result;
-        }
-      }
-
-      // Calculating Days
-      var days = (currentDate.getDate()) - (nextDate.getDate());
-      if (days == 0) {
-        result += 'Today'
-      } else {
-        if (days == 1) {
-          result += 'Yesterday'
-
-        } else {
-          if (days >= 2) {
-            result += `${days} days ago`
-          }
-        }
-      }
+    timo(date) {
 
 
-      return result;
-
-
+      dayjs.extend(window.dayjs_plugin_relativeTime);
+      dayjs();
+      const futureDate = dayjs(date);
+      console.log(futureDate.fromNow());
+      return futureDate.fromNow()
     },
 
     env(path) {
-      if (location.href.includes('http://127.0.0.1:5501/')) {
+      if (location.href.includes('http://127.0.0.1:5502/')) {
         // this is in dev mode
         return path;
       } else {
@@ -234,6 +204,7 @@ const app = Vue.createApp({
     this.animateViews(27, 300)
 
 
+    // this.time = futureDate.fromNow()
   },
 
 
@@ -1032,7 +1003,7 @@ app.component('comments', {
     /*html */
     `
   
-  <section class="col-12 col-lg-5 px-2 py-3">
+  <section class="col-12 col-lg-6 px-2 py-3">
       <div class="bg-light p-3 shadow-sm rounded d-flex flex-column gap-3">
           <div class="d-flex flex-column">
               <h3 class="fs-2 bebas text-secondary text-start">Community chat</h3>
@@ -1061,7 +1032,7 @@ app.component('comments', {
                     <i class="bi bi-at text-secondary fs-5"></i>
                     <strong class="text-primary pop opacity-75">{{c.username}}</strong>
                 </div>
-                <p class="text-secondary pop fs-small">
+                <p :class="'text-secondary fs-small '+font('pop')">
                     <small class="cap">{{c.theComment}}</small>
                     <i class="bi bi-dot"></i>
                     <time class="fs-small mono">{{timo(c.date)}}</time><br>
@@ -1078,21 +1049,21 @@ app.component('comments', {
                     <strong class="text-primary pop opacity-75">Mahmoud Mashoun</strong>
                 </div>
                 <p class="text-secondary pop fs-small">
-                    <small class="cap">Don't be shy - leave a comment and join the discussion.</small>
+                    <small class="cap">Don't be shy - leave a comment and join the discussion </small>
                 </p>
             </div>
 
           </section>
-          <div class="pop">
+          <div>
               <!-- Add a comment -->
               <small class="fs-xsmall float-end mb-1 text-secondary pop">{{max - theComment.length}}</small>
               <grammarly-editor-plugin>
-                <textarea v-model="theComment" @keyup="validateComment" id="theComment" class="form-control bg-light" rows="4" placeholder="Add comment"></textarea>
+                <textarea v-model="theComment" @keyup="validateComment" id="theComment" class="form-control bg-light text-secondary pop" rows="4" placeholder="Add comment"></textarea>
                 <small class="invalid-feedback fs-xsmall pop mt-1">Max {{max}} char !</small>
               <grammarly-editor-plugin>
               <!-- submit ur comment -->
               <div class="input-group mt-2">
-                  <input @keyup="validateEmail" type="email" id="email" v-model="useremail" class="form-control py-2 bg-light" placeholder="Enter your email"
+                  <input @keyup="validateEmail" type="email" id="email" v-model="useremail" class="form-control py-2 bg-light pop" placeholder="Enter your email"
                       aria-label="Recipient's username" aria-describedby="button-addon2">
                   <button @click="newComment" class="btn btn-primary px-3" type="button"><span class="pop">Submit</span></button>
               </div>
@@ -1108,7 +1079,7 @@ app.component('comments', {
       theComment: '',
       useremail: '',
       spinner: false,
-      nocomments:false
+      nocomments: false
     }
   },
   props: ['api', 'index'],
@@ -1118,10 +1089,10 @@ app.component('comments', {
     api += `?getComment=1&blogIndex=${this.index}`
     fetch(api).then(res => res.json()).then(res => {
       console.log(res)
-      if(res != '203'){
+      if (res != '203') {
         this.comments = res
         this.spinner = false
-      }else{
+      } else {
         this.spinner = false
         this.nocomments = true
       }
@@ -1129,9 +1100,25 @@ app.component('comments', {
   },
   methods: {
 
+    font(fontname) {
+      if (document.querySelector('html').getAttribute('lang') == 'ar') return 'arb'
+      return fontname
+    },
+
     validateComment() {
+      
       const textarea = document.getElementById('theComment');
-      const length = this.theComment;
+
+      // Checking if there is an arabic char
+      var arabicRegex = /[\u0600-\u06FF]/; // Unicode range for Arabic characters
+      if (arabicRegex.test(this.theComment)) {
+        textarea.classList.add('arb')
+        textarea.setAttribute('dir','rtl')
+      }else{
+        textarea.classList.remove('arb')
+        textarea.setAttribute('dir','ltr')
+
+      }
       // console.log(this.max < this.theComment.length)
       if (this.max < this.theComment.length) textarea.classList.add('is-invalid')
       else textarea.classList.remove('is-invalid')
