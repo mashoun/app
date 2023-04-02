@@ -4,7 +4,7 @@ const app = Vue.createApp({
       // embed: `<iframe width="560" height="315" src="https://www.youtube.com/embed/c5wAfnzlA8o" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>`,
       article: `<h1>my blog subtitile</h1>`,
       webProjects: 0,
-      API: 'https://script.google.com/macros/s/AKfycbwQcS1tfzwEjLaifgX-kJnk-zMss60tNepuEzgoxHR6JclP6psGsbYHgEiULrvp983isg/exec',
+      API: 'https://script.google.com/macros/s/AKfycbwkLQpJAAFiHYRL7TcBcUDOs9bLXIRFRb389jpZzcezTpNrTeD2TaEnnZhWcBONkwPCzw/exec',
       years: 0,
       views: 0,
       pic: 'https://drive.google.com/uc?export=view&id=1carhdDO1t8HQlqGYBC9ad57n2WQamfaa',
@@ -1159,22 +1159,6 @@ app.component('comments', {
       if (x) return ' show '
       else return ''
     },
-    timeDifference(date1, date2) {
-      const timeDiff = Math.abs(date2.getTime() - date1.getTime());
-      const minute = 60 * 1000;
-      const hour = 60 * minute;
-      const day = 24 * hour;
-
-      if (timeDiff < minute) {
-        return "just now";
-      } else if (timeDiff < hour) {
-        const diff = Math.round(timeDiff / minute);
-        return `${diff} min ago`;
-      } else if (timeDiff < day) {
-        const diff = Math.round(timeDiff / hour);
-        return `${diff} hr ago`;
-      }
-    },
     shareOnLinkedIn() {
       const encodedUrl = encodeURIComponent('https://mashoun.github.io/app/blogs/blog1/');
       const encodedTitle = encodeURIComponent('Testing First Blog with Linkedin API');
@@ -1185,8 +1169,6 @@ app.component('comments', {
     },
 
     timo(date) {
-
-
       dayjs.extend(window.dayjs_plugin_relativeTime);
       dayjs();
       const futureDate = dayjs(date);
