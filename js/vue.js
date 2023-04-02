@@ -4,7 +4,7 @@ const app = Vue.createApp({
       // embed: `<iframe width="560" height="315" src="https://www.youtube.com/embed/c5wAfnzlA8o" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>`,
       article: `<h1>my blog subtitile</h1>`,
       webProjects: 0,
-      API: 'https://script.google.com/macros/s/AKfycbwkLQpJAAFiHYRL7TcBcUDOs9bLXIRFRb389jpZzcezTpNrTeD2TaEnnZhWcBONkwPCzw/exec',
+      API: 'https://script.google.com/macros/s/AKfycbx92NmYBTszD7WwoYT7257FHak8se43EBtFmAboPkzW1CZblLPTQFpET676FWxFPFFCLw/exec',
       years: 0,
       views: 0,
       pic: 'https://drive.google.com/uc?export=view&id=1carhdDO1t8HQlqGYBC9ad57n2WQamfaa',
@@ -1007,7 +1007,7 @@ app.component('comments', {
       <div class="bg-light p-3 shadow-sm rounded d-flex flex-column gap-3">
           <div class="d-flex flex-column">
               <h3 class="fs-2 bebas text-secondary text-start">Community chat</h3>
-              <p class="pop text-secondary fs-small cap">Please note that I will review and respond to your comment before it is posted.</p>
+              <p class="pop text-secondary fs-small cap"> {{blogtitle}} Please note that I will review and respond to your comment before it is posted.</p>
           </div>
 
           <!-- comment box -->
@@ -1082,7 +1082,7 @@ app.component('comments', {
       nocomments: false
     }
   },
-  props: ['api', 'index'],
+  props: ['api', 'index','blogtitle'],
   mounted() {
     this.spinner = true;
     var api = this.api
@@ -1141,7 +1141,8 @@ app.component('comments', {
       var data = {
         "blogIndex": this.index,
         "useremail": this.useremail,
-        "theComment": this.theComment
+        "theComment": this.theComment,
+        "blogTitle":this.blogtitle
       }
       fetch(api, {
         method: "POST",
