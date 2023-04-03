@@ -1007,7 +1007,7 @@ app.component('comments', {
       <div class="bg-light p-3 shadow-sm rounded d-flex flex-column gap-3">
           <div class="d-flex flex-column">
               <h3 class="fs-2 bebas text-secondary text-start">Community chat</h3>
-              <p class="pop text-secondary fs-small cap"> {{blogtitle}} Please note that I will review and respond to your comment before it is posted.</p>
+              <p class="pop text-secondary fs-small cap">Please note that I will review and respond to your comment before it is posted.</p>
           </div>
 
           <!-- comment box -->
@@ -1028,15 +1028,16 @@ app.component('comments', {
           </div>
           <section v-else class="d-flex flex-column gap-2">
             <div v-if="!nocomments" class="d-flex flex-column p-2 shadow-sm rounded" v-for="c in comments">
+                <time class="fs-xsmall text-secondary pop">{{timo(c.date)}}</time>
                 <div class="d-flex align-items-center">
-                    <i class="bi bi-at text-secondary fs-5"></i>
+                    <i class="bi bi-at text-primary fs-5"></i>
                     <strong class="text-primary pop opacity-75">{{c.username}}</strong>
                 </div>
                 <p :class="'text-secondary fs-small '+font('pop')">
                     <small class="cap">{{c.theComment}}</small>
-                    <i class="bi bi-dot"></i>
-                    <time class="fs-small mono">{{timo(c.date)}}</time><br>
-                    <span class="text-success opacity-75 d-flex align-items-start gap-2"
+                    
+                    <br>
+                    <span class="pt-2 text-success opacity-75 d-flex align-items-start gap-2"
                         title="@Mahmoud Mashoun">
                         <i class="bi bi-arrow-return-right"></i>
                         <small> <strong>Mahmoud Mashoun<i class="bi bi-dot"></i></strong>{{c.reply}}</small>
