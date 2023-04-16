@@ -4,7 +4,7 @@ const app = Vue.createApp({
       // embed: `<iframe width="560" height="315" src="https://www.youtube.com/embed/c5wAfnzlA8o" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>`,
       article: `<h1>my blog subtitile</h1>`,
       webProjects: 0,
-      API: 'https://script.google.com/macros/s/AKfycbx92NmYBTszD7WwoYT7257FHak8se43EBtFmAboPkzW1CZblLPTQFpET676FWxFPFFCLw/exec',
+      API: 'https://script.google.com/macros/s/AKfycbwu-8xn-OdR8-VeHVv1biqp9Tx-qr6mslVfj_RBaMBGASjXXK0bGrd5b811B1k0Uql2tw/exec',
       years: 0,
       views: 0,
       pic: 'https://drive.google.com/uc?export=view&id=1carhdDO1t8HQlqGYBC9ad57n2WQamfaa',
