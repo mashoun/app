@@ -1,3 +1,13 @@
+import utilities from './utilities.js'
+import navbar from '../components/navbar-section.js'
+import hero from '../components/hero-section.js'
+import experience from '../components/experience-section.js'
+import blogs from '../components/blogs-section.js'
+import footer from '../components/footer-section.js'
+import blog from '../components/blog.js'
+import comments from '../components/comments-section.js'
+import swiper from '../components/swiper.js'
+
 const app = Vue.createApp({
   data() {
     return {
@@ -77,8 +87,6 @@ const app = Vue.createApp({
 
   methods: {
 
-
-
     font(fontname) {
       if (document.querySelector('html').getAttribute('lang') == 'ar') return 'arb'
       return fontname
@@ -102,27 +110,12 @@ const app = Vue.createApp({
       if (x) return ' show '
       else return ''
     },
-    timo(date) {
-
-
-      dayjs.extend(window.dayjs_plugin_relativeTime);
-      dayjs();
-      const futureDate = dayjs(date);
-      console.log(futureDate.fromNow());
-      return futureDate.fromNow()
+    timo(date){
+      return utilities.timo(date)
     },
 
     env(path) {
-      if (location.href.includes('http://127.0.0.1:5502/')) {
-        // this is in dev mode
-        return path;
-      } else {
-        if (location.href.includes('mashoun.github.io/')) {
-          // in production mode
-          // add /app/ directory to all links
-          return '/app/' + path
-        }
-      }
+      return utilities.env(path)
     },
     animateTags() {
       var i = 0;
@@ -205,7 +198,7 @@ const app = Vue.createApp({
 
 
     // this.time = futureDate.fromNow()
-    
+
     var swiper = new Swiper('.swiper', {
       spaceBetween: 20,
       loop: true,
@@ -225,17 +218,8 @@ const app = Vue.createApp({
 
 })
 
-import navbar from '../components/navbar-section.js'
-import hero from '../components/hero-section.js'
-import experience from '../components/experience-section.js'
-import blogs from '../components/blogs-section.js'
-import footer from '../components/footer-section.js'
-import blog from '../components/blog.js'
-import comments from '../components/comments-section.js'
-import swiper from '../components/swiper.js'
 
-
-app.component('navbar-section',navbar)
+app.component('navbar-section', navbar)
 app.component('hero-section', hero)
 app.component('experience-section', experience)
 app.component('blogs-section', blogs)
