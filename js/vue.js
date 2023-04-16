@@ -4,7 +4,7 @@ const app = Vue.createApp({
       // embed: `<iframe width="560" height="315" src="https://www.youtube.com/embed/c5wAfnzlA8o" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>`,
       article: `<h1>my blog subtitile</h1>`,
       webProjects: 0,
-      API: 'https://script.google.com/macros/s/AKfycbwu-8xn-OdR8-VeHVv1biqp9Tx-qr6mslVfj_RBaMBGASjXXK0bGrd5b811B1k0Uql2tw/exec',
+      API: 'https://script.google.com/macros/s/AKfycby6dp89wsa9U4WRwPoFBZz2NLYk1G23yqBtBTn6Iw6KS_A667x4jzmz-YXU7vkvLfIUJg/exec',
       years: 0,
       views: 0,
       pic: 'https://drive.google.com/uc?export=view&id=1carhdDO1t8HQlqGYBC9ad57n2WQamfaa',
@@ -1031,7 +1031,7 @@ app.component('comments', {
                 <time class="fs-xsmall text-secondary pop">{{timo(c.date)}}</time>
                 <div class="d-flex align-items-center">
                     <i class="bi bi-at text-primary fs-5"></i>
-                    <strong class="text-primary pop opacity-75">{{c.username}}</strong>
+                    <strong class="text-primary pop opacity-75">{{c.name}}</strong>
                 </div>
                 <p :class="'text-secondary fs-small '+font('pop')">
                     <small class="cap">{{c.theComment}}</small>
@@ -1083,7 +1083,7 @@ app.component('comments', {
       nocomments: false
     }
   },
-  props: ['api', 'index','blogtitle'],
+  props: ['api', 'index'],
   mounted() {
     this.spinner = true;
     var api = this.api
@@ -1140,10 +1140,9 @@ app.component('comments', {
       var api = this.api
       api += `?newComment=1`
       var data = {
-        "blogIndex": this.index,
-        "useremail": this.useremail,
+        "email": this.useremail,
         "theComment": this.theComment,
-        "blogTitle":this.blogtitle
+        "blogTitle":this.index
       }
       fetch(api, {
         method: "POST",
