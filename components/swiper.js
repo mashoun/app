@@ -1,4 +1,3 @@
-import 'https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js'
 export default {
     template:
         /*html */
