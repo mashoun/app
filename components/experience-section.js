@@ -84,7 +84,7 @@ export default {
       `,
     methods: {
         env(path) {
-            if (location.href.includes('http://127.0.0.1:5501/')) {
+            if (location.href.includes('http://127.0.0.1:5502/')) {
                 // this is in dev mode
                 return path;
             } else {
